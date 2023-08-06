@@ -1,10 +1,9 @@
 import { Button } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
 import { useEffect } from 'react';
-import { useForm, FieldErrors } from 'react-hook-form';
+import { useForm, FieldErrors, useFormState } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
-import CustomInput from './components/CustomInput';
-//import { DevTool } from 
+//import CustomInput from './components/CustomInput';
 ///import PDFDoc from '../PDFDoc';
 //import { PDFViewer } from '@react-pdf/renderer';
 import CInput from './components/CI';
@@ -50,7 +49,7 @@ export const TryForm = () => {
     isSubmitted,
     isSubmitSuccessful,
     submitCount,
-  } = formState;
+  } = useFormState();
 
   console.log({ errors, isDirty, touchedFields, dirtyFields, isValid });
   console.log({ isSubmitting, isSubmitted, isSubmitSuccessful, submitCount });
@@ -101,7 +100,7 @@ export const TryForm = () => {
           {...register('firstname')}
         />
         <CInput
-          name="lastName"
+          //name="lastName"
           placeholder="Last Name"
           error={errors.lastname}
           {...register('lastname')}
@@ -131,6 +130,7 @@ export const TryForm = () => {
         </Button>
         </div>
       </form>
+    {/*}  <DevTool />
         {/* Conditional rendering based on formData 
         {formData ? (
             <PDFViewer style={{ width: '100%', height: '100vh' }}>

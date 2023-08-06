@@ -36,7 +36,7 @@ interface InputProps extends ChakraInputProps {
     error?: FieldError;
 }
 
-const Input: React.FC<InputProps> = ({ name, label, error = null, ...rest }) => {
+const CInput: React.FC<InputProps> = ({ name, label, error = null, ...rest }) => {
     return (
         <FormControl isInvalid={!!error}>
             {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
@@ -62,4 +62,4 @@ const Input: React.FC<InputProps> = ({ name, label, error = null, ...rest }) => 
     );
 }
 
-export default Input;
+export default CInput;
