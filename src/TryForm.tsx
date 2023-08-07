@@ -66,7 +66,7 @@ export const TryForm = () => {
   const onReset = () => {
     reset();
   };
-{/*}
+{/*
   const handleGetValues = (data : FormValues) => {
     console.log("Get values", getValues(data));  //GetValues not defined lol
   };
@@ -92,7 +92,7 @@ export const TryForm = () => {
       w="800px"
       rounded="10"
       boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-    > <FormProvider {...form}>
+    >
       <form onSubmit={handleSubmit(onSubmit, onError)} >
         <div className ="form-control">
         <CInput
@@ -137,8 +137,8 @@ export const TryForm = () => {
         </Button>
         </div>
       </form>
-      </FormProvider>
-      {/* <DevTool /> */}
+      {/* <DevTool />
+       */}
         {/* Conditional rendering based on formData 
         {formData ? (
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
