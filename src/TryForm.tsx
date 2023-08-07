@@ -28,10 +28,11 @@ type FormValues = {
 
 export const TryForm = () => {
 
-  const form = useForm<FormValues>();
+  const form = useForm<FormValues>({ mode: 'onTouched' }); // By default, the validation is triggered on every change of the input value (mode: 'onChange')
+  // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
   const { 
     register, 
-    control,
+ //   control,
     handleSubmit, 
     formState : { errors : formErrors }, // this errors is conflicting with the input errors need to fix that 
     //watch, 
@@ -85,13 +86,13 @@ export const TryForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   return (
-  <FormProvider {...form}>
+  
     <Box
       p="8"
       w="800px"
       rounded="10"
       boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-    > 
+    > <FormProvider {...form}>
       <form onSubmit={handleSubmit(onSubmit, onError)} >
         <div className ="form-control">
         <CInput
@@ -136,6 +137,7 @@ export const TryForm = () => {
         </Button>
         </div>
       </form>
+      </FormProvider>
       <DevTool />
         {/* Conditional rendering based on formData 
         {formData ? (
@@ -144,9 +146,6 @@ export const TryForm = () => {
             </PDFViewer>
           ) : null} */}
       </Box>
-    </FormProvider>
-    
-
   );
 }
 
