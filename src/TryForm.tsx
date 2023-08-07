@@ -32,7 +32,7 @@ export const TryForm = () => {
   // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
   const { 
     register, 
- //   control,
+    control,
     handleSubmit, 
     formState : { errors : formErrors }, // this errors is conflicting with the input errors need to fix that 
     //watch, 
@@ -66,7 +66,7 @@ export const TryForm = () => {
   const onReset = () => {
     reset();
   };
-
+{/*}
   const handleGetValues = (data : FormValues) => {
     console.log("Get values", getValues(data));  //GetValues not defined lol
   };
@@ -77,7 +77,7 @@ export const TryForm = () => {
       shouldDirty: true,
       shouldTouch: true,
     });
-  };
+  };  */}
 
   useEffect(() => {
     if (isSubmitSuccessful) {
