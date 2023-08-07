@@ -30,39 +30,41 @@ export default CInput;
 import { Input as ChakraInput, FormLabel, FormControl, InputProps as ChakraInputProps, FormErrorMessage } from "@chakra-ui/react"
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 import { Control, useController } from "react-hook-form";
+import { forwardRef } from "@chakra-ui/react";
 interface InputProps extends ChakraInputProps {
     name: string;
     label?: string;
-   control: Control<any>
+   control?: Control<any>
     placeholder?: string;
    errors?: FieldError | Merge<FieldError, FieldErrorsImpl> | undefined;
 }
 
-const CInput: React.FC<InputProps> = ({ name , label, placeholder, errors = null, control, ...rest }) => {
-    return (
-        <FormControl isInvalid={!!errors}>
-            {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
-            <ChakraInput 
-                name={name}                 
-                id={name} 
-                placeholder={placeholder}
-                focusBorderColor="pink.500" 
-                bgColor="gray.900" 
-                variant="filled"
-                _hover={{
-                  bgColor: 'gray.900'
-                }}
-                size="lg"
-                {...rest}
-            />
-            {errors && (
-                <FormErrorMessage>
-                    {errors.message}   {/*decide if it shud be error or errors */}
-                </FormErrorMessage>
-            )}
-            
-        </FormControl>
-    );
-}
+const CInput: React.FC<InputProps> = 
+    forwardRef(({ name , label, placeholder, errors = null, control, ...rest }, ref)=>{
+        return (
+            <FormControl isInvalid={!!errors}>
+                {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
+                <ChakraInput 
+                    name={name}                 
+                    id={name} 
+                    placeholder={placeholder}
+                    focusBorderColor="pink.500" 
+                    bgColor="gray.900" 
+                    variant="filled"
+                    _hover={{
+                      bgColor: 'gray.900'
+                    }}
+                    size="lg"
+                    {...rest}
+                />
+                {errors && (
+                    <FormErrorMessage>
+                        {errors.message?.toString()}   {/*decide if it shud be error or errors */}
+                    </FormErrorMessage>
+                )}
+                
+            </FormControl>
+        );
+    })
 
 export default CInput;
