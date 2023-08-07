@@ -6,7 +6,8 @@ import TryForm from './tryForm'
 export default function App() {
         return (
           <>
-            <TryForm />
+            <TryForm />           
+            {/*<Pages /> */}
           </>
         )
     }

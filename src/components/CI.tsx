@@ -29,20 +29,23 @@ export default CInput;
 
 import { Input as ChakraInput, FormLabel, FormControl, InputProps as ChakraInputProps, FormErrorMessage } from "@chakra-ui/react"
 import { FieldError } from 'react-hook-form'
-
+import { Control, useController } from "react-hook-form";
 interface InputProps extends ChakraInputProps {
     name: string;
     label?: string;
-    error?: FieldError;
+    control: Control<any>;
+    placeholder?: string;
+    errors?: FieldError;
 }
 
-const CInput: React.FC<InputProps> = ({ name, label, error = null, ...rest }) => {
+const CInput: React.FC<InputProps> = ({ name , label, placeholder, errors = null, ...rest }) => {
     return (
-        <FormControl isInvalid={!!error}>
+        <FormControl isInvalid={!!errors}>
             {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
             <ChakraInput 
                 name={name}                 
                 id={name} 
+                placeholder={placeholder}
                 focusBorderColor="pink.500" 
                 bgColor="gray.900" 
                 variant="filled"
@@ -52,9 +55,9 @@ const CInput: React.FC<InputProps> = ({ name, label, error = null, ...rest }) =>
                 size="lg"
                 {...rest}
             />
-            {error && (
+            {errors && (
                 <FormErrorMessage>
-                    {error.message}
+                    {errors.message}   {/*decide if it shud be error or errors */}
                 </FormErrorMessage>
             )}
             

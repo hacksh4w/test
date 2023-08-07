@@ -39,4 +39,4 @@ function CustomInput({ name, placeholder, errors, register } : CustomInputProps)
   );
 }
 
-export default CustomInput;``
+export default CustomInput;

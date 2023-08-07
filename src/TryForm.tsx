@@ -2,10 +2,12 @@ import { Button } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
 import { useEffect } from 'react';
 import { useForm, FieldErrors, useFormState } from 'react-hook-form';
+import { FormProvider } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
 //import CustomInput from './components/CustomInput';
 ///import PDFDoc from '../PDFDoc';
 //import { PDFViewer } from '@react-pdf/renderer';
+import { DevTool } from '@hookform/devtools';
 import CInput from './components/CI';
 
 type FormValues = {
@@ -24,20 +26,20 @@ type FormValues = {
     }[];
   };
 
-
 export const TryForm = () => {
 
   const form = useForm<FormValues>();
   const { 
     register, 
-    control, 
+    control,
     handleSubmit, 
-    formState : { error : formErrors }, // this errors is conflicting with the input errors need to fix that 
-    watch, 
+    formState : { errors : formErrors }, // this errors is conflicting with the input errors need to fix that 
+    //watch, 
     getValues, 
     setValue, 
     reset, 
-    trigger } = form; 
+    //trigger 
+  } = form; 
 
   const {
     errors,
@@ -45,16 +47,14 @@ export const TryForm = () => {
     touchedFields,
     dirtyFields,
     isValid,
-    isSubmitting,
     isSubmitted,
     isSubmitSuccessful,
-    submitCount,
   } = useFormState();
 
   console.log({ errors, isDirty, touchedFields, dirtyFields, isValid });
-  console.log({ isSubmitting, isSubmitted, isSubmitSuccessful, submitCount });
+  console.log({ isSubmitted, isSubmitSuccessful });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = (data : FormValues) => {
     console.log("Form submitted", data);
   };
 
@@ -66,12 +66,12 @@ export const TryForm = () => {
     reset();
   };
 
-  const handleGetValues = () => {
-    console.log("Get values", getValues("username"));
+  const handleGetValues = (data : FormValues) => {
+    console.log("Get values", getValues(data));  //GetValues not defined lol
   };
 
-  const handleSetValue = () => {
-    setValue("username", "", {
+  const handleSetValue = (data : FormValues) => {
+    setValue(data, "", {  //not assignable, previously had "firstname" in it
       shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
@@ -85,44 +85,50 @@ export const TryForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   return (
+  <FormProvider {...form}>
     <Box
       p="8"
       w="800px"
       rounded="10"
       boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-    >
+    > 
       <form onSubmit={handleSubmit(onSubmit, onError)} >
         <div className ="form-control">
         <CInput
-          //name="firstName"
+          id="firstName"
           placeholder="First Name"
-          error={errors.firstname}
+          errors={errors.firstname}
+          control={control}
           {...register('firstname')}
         />
         <CInput
-          //name="lastName"
+          id="lastName"
           placeholder="Last Name"
-          error={errors.lastname}
+          errors={errors.lastname}
+          control={control}
           {...register('lastname')}
         />
         <CInput
-         // name="email"
+          id="email"
           placeholder="Email"
-          error={errors.email}
+          errors={errors.email}
+          control={control}
           {...register('email')}
         />
         <CInput
-          //name="phone"
+          id="phoneNum"
           label="Phone Number"
           placeholder="Phone Number"
-          error={errors.phone}
+          control={control}
+          errors={errors.phone}
           {...register('phone')}
         />
         <CInput
-          //name="address"
+          id="address"
           label ="My Address"
           placeholder="Address"
-          error={errors.address}
+          control={control}
+          errors={errors.address}
           {...register('address')}
         />
         <Button type="submit" colorScheme="blue" my="3">
@@ -130,14 +136,17 @@ export const TryForm = () => {
         </Button>
         </div>
       </form>
-    {/*}  <DevTool />
+      <DevTool />
         {/* Conditional rendering based on formData 
         {formData ? (
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
               <PDFDoc formData={formData} />
             </PDFViewer>
           ) : null} */}
-    </Box>
+      </Box>
+    </FormProvider>
+    
+
   );
 }
 
