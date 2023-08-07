@@ -2,7 +2,6 @@ import { Button } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
 import { useEffect } from 'react';
 import { useForm, FieldErrors, useFormState } from 'react-hook-form';
-import { FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 ///import PDFDoc from '../PDFDoc';
@@ -21,9 +20,7 @@ type FormValues = {
     };
     age: number;
     dob: Date;
-    phone: {
-      number: string;
-    }[];
+    phone: number;
   };
 
 export const TryForm = () => {
@@ -36,15 +33,17 @@ export const TryForm = () => {
 
   const { 
     register, 
+    control,
     handleSubmit, 
-    formState : { errors : formErrors }, // this errors is conflicting with the input errors need to fix that 
+    formState : { errors }, // this errors is conflicting with the input errors need to fix that   
+    //try isSubmitting with load from formState
     //watch, 
     getValues, 
     setValue, 
     reset, 
     //trigger 
   } = form; 
-
+{/*}
   const {
     errors,
     isDirty,
@@ -53,17 +52,18 @@ export const TryForm = () => {
     isValid,
     isSubmitted,
     isSubmitSuccessful,
-  } = useFormState();
+  } = useFormState();  
 
   console.log({ errors, isDirty, touchedFields, dirtyFields, isValid });
   console.log({ isSubmitted, isSubmitSuccessful });
 
+*/}
   const onSubmit = (data : FormValues) => {
     console.log("Form submitted", data);
   };
 
   const onError = (errors: FieldErrors<FormValues>) => {
-    //console.log("Form errors", errors);
+    console.log("Form errors", errors);
   };
 
   const onReset = () => {
@@ -80,14 +80,14 @@ export const TryForm = () => {
       shouldDirty: true,
       shouldTouch: true,
     });
-  };  */}
+  };  
 
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();  
       //onReset();
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset]); */}
 
   return (
   
@@ -101,43 +101,62 @@ export const TryForm = () => {
         <div className ="form-control">
         <CInput
           id="firstName"
+          name='firstname'
           placeholder="First Name"
           errors={errors.firstname}
-          {...register('firstname')}
+          register = {register}
+          //{...register('firstname')}
         />
         <CInput
           id="lastName"
           placeholder="Last Name"
+          register = {register}
+          name='lastname'
           errors={errors.lastname}
-          {...register('lastname')}
+         // {...register('lastname')}
         />
         <CInput
           id="email"
           placeholder="Email"
+          name='email'
+          register = {register}
           errors={errors.email}
-          {...register('email')}
+          //{...register('email')}
         />
         <CInput
           id="phoneNum"
           label="Phone Number"
           placeholder="Phone Number"
+          name='phoneNum'
+          register = {register}
           errors={errors.phone}
-          {...register('phone')}
+          //{...register('phone')}
         />
         <CInput
-          id="address"
+          id="address-line-1"
           label ="My Address"
           placeholder="Address"
-          errors={errors.address}
-          {...register('address')}
+          name='address-line-1'
+          errors={errors.address?.line1}
+          register = {register}
+          //{...register('address.line1')}
+        />
+
+        <CInput
+          id="address-line2"
+          label ="My Address"
+          placeholder="Address"
+          name='address-line-2'
+          register = {register}
+          errors={errors.address?.line2}
+          //{...register('address.line2')}
         />
         <Button type="submit" colorScheme="blue" my="3">
           submit
         </Button>
         </div>
       </form>
-      {/* <DevTool />
-       */}
+       <DevTool  control={control} />
         {/* Conditional rendering based on formData 
         {formData ? (
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
