@@ -85,8 +85,8 @@ export const TryForm = () => {
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      //reset();  
-      onReset();
+      reset();  
+      //onReset();
     }
   }, [isSubmitSuccessful, reset]);
 
