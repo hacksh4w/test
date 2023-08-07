@@ -11,7 +11,7 @@ const formDataSchema = yup.object().shape({
   username: yup.string().required('Username is required'),
   email: yup.string().email('Invalid email').required('Email is required'),
   channel: yup.string().required('Channel is required'),
-  // Add other validation schemas for your form fields
+  // Add other validation schemas for form fields
 });
 
 function Hm() {
@@ -35,7 +35,7 @@ function Hm() {
         <ChakraInput name="email" placeholder="Email" errors={errors} register={control.register} />
         <ChakraInput name="channel" placeholder="Channel" errors={errors} register={control.register} />
 
-        {/* Add other ChakraInput components for your other form fields */}
+        {/* Add other ChakraInput components for other form fields */}
         
         <Button colorScheme="blue" type="submit">
           Submit

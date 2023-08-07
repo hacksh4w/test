@@ -3,8 +3,8 @@ import { Box } from '@chakra-ui/layout';
 import { useEffect } from 'react';
 import { useForm, FieldErrors, useFormState } from 'react-hook-form';
 import { FormProvider } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
-//import CustomInput from './components/CustomInput';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 ///import PDFDoc from '../PDFDoc';
 //import { PDFViewer } from '@react-pdf/renderer';
 import { DevTool } from '@hookform/devtools';
@@ -28,8 +28,12 @@ type FormValues = {
 
 export const TryForm = () => {
 
-  const form = useForm<FormValues>({ mode: 'onTouched' }); // By default, the validation is triggered on every change of the input value (mode: 'onChange')
-  // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
+  const form = useForm<FormValues>({ 
+    mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
+                        // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
+    resolver: yupResolver(schema),
+  }); 
+
   const { 
     register, 
     control,
@@ -81,7 +85,8 @@ export const TryForm = () => {
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      reset();
+      reset();  
+      //onReset();
     }
   }, [isSubmitSuccessful, reset]);
 
