@@ -31,12 +31,11 @@ export const TryForm = () => {
   const form = useForm<FormValues>({ 
     mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
                         // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
-    resolver: yupResolver(schema),
+   // resolver: yupResolver(schema),
   }); 
 
   const { 
     register, 
-    control,
     handleSubmit, 
     formState : { errors : formErrors }, // this errors is conflicting with the input errors need to fix that 
     //watch, 
@@ -104,28 +103,24 @@ export const TryForm = () => {
           id="firstName"
           placeholder="First Name"
           errors={errors.firstname}
-          control={control}
           {...register('firstname')}
         />
         <CInput
           id="lastName"
           placeholder="Last Name"
           errors={errors.lastname}
-          control={control}
           {...register('lastname')}
         />
         <CInput
           id="email"
           placeholder="Email"
           errors={errors.email}
-          control={control}
           {...register('email')}
         />
         <CInput
           id="phoneNum"
           label="Phone Number"
           placeholder="Phone Number"
-          control={control}
           errors={errors.phone}
           {...register('phone')}
         />
@@ -133,7 +128,6 @@ export const TryForm = () => {
           id="address"
           label ="My Address"
           placeholder="Address"
-          control={control}
           errors={errors.address}
           {...register('address')}
         />
