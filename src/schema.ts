@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 const fieldRequired =  `This field is Required!`;   //instead of this, try label
 const canOnlyContain = `can only contains alphabates`;
+
 const schema = yup.object().shape({
   firstName: yup
     .string()
@@ -36,16 +37,17 @@ const schema = yup.object().shape({
     .string()
     .trim(),
   phone: yup
-    .string()
-    .trim()
+    .number()
     .required(fieldRequired), 
   age : yup
   .number()
   .required(fieldRequired),
   dob : yup
-  .date()
-  .required(),
-
+  .date().transform((curr, orig) => orig === '' ? null : curr)
+  .required('Mandatory field message')
+  //.date().nullable().required().typeError('Invalid Date')
 });
 
-export { schema };
+const defaultValues = schema.cast({}); // Use schema.cast to provide default values
+
+export { schema, defaultValues };

@@ -4,8 +4,7 @@ import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { useEffect } from 'react';
 import { useForm, FieldErrors, useFormState } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-//import * as yup from 'yup';
-import { schema } from './schema';
+import { schema,defaultValues } from './schema';
 ///import PDFDoc from '../PDFDoc';
 //import { PDFViewer } from '@react-pdf/renderer';
 import { DevTool } from '@hookform/devtools';
@@ -14,7 +13,10 @@ import { FormValues } from './types';
 
 export const TryForm = () => {
 
-  const form = useForm<FormValues>({mode: 'onTouched'})//resolver: yupResolver(schema),
+  const form = useForm<FormValues>({ 
+  mode: 'onTouched', 
+  resolver: yupResolver(schema),
+  defaultValues: defaultValues, });
    // mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
                         // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
 
@@ -120,7 +122,7 @@ export const TryForm = () => {
           label="Phone Number"
           placeholder="Phone Number"
           type='tel'
-          name='phone'
+          name=''
           register = {register}
           errors={errors.phone}
           //{...register('phone')}
