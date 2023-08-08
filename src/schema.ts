@@ -17,13 +17,13 @@ const schema = yup.object().shape({
     .trim()
     .max(20)
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Caste ${canOnlyContain}`),
   religion: yup
     .string()
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Religion ${canOnlyContain}`),
   community: yup
     .string()
     .trim()
@@ -54,17 +54,17 @@ const schema = yup.object().shape({
   .string()
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
   address2: yup
   .string()
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
   address3: yup
   .string()
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`), */
+    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`), */
 
  //Relevent Details
   email: yup
@@ -100,13 +100,13 @@ const schema = yup.object().shape({
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Father / Guardian's Name  ${canOnlyContain}`),
   occupation : yup
     .string()
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Occupation ${canOnlyContain}`),
   gEmail : yup
     .string()
     .trim()
@@ -118,7 +118,7 @@ const schema = yup.object().shape({
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Father / Guardian's Phone Number ${canOnlyContain}`),
 
   // Permanent Address Details
   permAddress1 : yup
@@ -126,96 +126,95 @@ const schema = yup.object().shape({
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Address  ${canOnlyContain}`),
   permAddress2 : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Address  ${canOnlyContain}`),
   permAddress3 : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Address  ${canOnlyContain}`),
   pin : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `PIN Code ${canOnlyContain}`),
   district : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `District Name ${canOnlyContain}`),
   state : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `State ${canOnlyContain}`),
 
   // Present Address Details
   presAddress1 : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
   presAddress2 : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
   presAddress3 : yup
   .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
   presPin : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `PIN Code ${canOnlyContain}`),
   presDistrict : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `District Name ${canOnlyContain}`),
   presState : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
-
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `State ${canOnlyContain}`),
 
   //Qualification Exam Details
   qualifyingExam : yup
-  .string()
-  .max(50)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(50)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Qualifying Exam Name ${canOnlyContain}`),
   qualifyingBoard : yup
-  .string()
-  .max(20)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(20)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Qualifying Exam Board Name ${canOnlyContain}`),
   instituteName : yup
-  .string()
-  .max(80)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(80)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `Institute Name ${canOnlyContain}`),
  // regNumQualExam : yup
 
   //percentage : yup
