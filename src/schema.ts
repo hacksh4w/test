@@ -90,7 +90,7 @@ const schema = yup.object().shape({
   .date()
   //.required(fieldRequired)
   .nullable()
-  .transform(v => (v instanceof Date && !isNaN(v) ? v : null)),
+  // .transform(v => (v instanceof Date && !isNaN(v) ? v : null)),
   //.date().transform((curr, orig) => orig === '' ? null : curr).required('Mandatory field message')
   //.date().nullable().required().typeError('Invalid Date') */
 });
