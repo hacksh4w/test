@@ -101,6 +101,7 @@ const schema = yup.object().shape({
 
   
   // Father/Guardian Details
+  ,
   gName : yup
     .string()
     .max(30)
