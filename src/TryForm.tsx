@@ -293,10 +293,10 @@ export const TryForm = () => {
               />
             </Box>{" "}
           </Flex>
-          <Flex direction={["column", "row"]} spacing="36px" w="100%" m="3">
+          <Flex direction={["column", "row"]} w="100%">
             <Box
               p="4"
-              w="100%"
+              w="50%"
               rounded="10"
               m="3"
               bg="cyan.200"
@@ -364,7 +364,7 @@ export const TryForm = () => {
             </Box>
             <Box
               p="4"
-              w="100%"
+              w="50%"
               rounded="10"
               bg="cyan.200"
               m="3"
