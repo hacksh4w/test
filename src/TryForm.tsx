@@ -1,10 +1,10 @@
-import { Button } from "@chakra-ui/button";
-import { Box } from "@chakra-ui/layout";
-import { Stack, Flex } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { useForm, FieldErrors, useFormState } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./schema";
+import { Button } from '@chakra-ui/button';
+import { Box } from '@chakra-ui/layout';
+import { Flex } from '@chakra-ui/react'
+import { useEffect } from 'react';
+import { useForm, FieldErrors, useFormState } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema';
 ///import PDFDoc from '../PDFDoc';
 //import { PDFViewer } from '@react-pdf/renderer';
 import { DevTool } from "@hookform/devtools";
@@ -95,431 +95,422 @@ export const TryForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <>
-      <form
-        onSubmit={handleSubmit(onSubmit, onError)}
-        style={{
-          width: "100vw",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          marginTop: "100px",
-        }}
+  <>
+  <form onSubmit={handleSubmit(onSubmit, onError)} >  {/*noValidate creates error updation on every step */}
+    
+    <div className ="form-control"
+  // style={{width : '100vw'}}
+  >
+    <Flex 
+      direction={['column', 'row']} 
+      //spacing='36px'
+      alignItems='center'
+      w='80vw'
+      p='3'
       >
-        {" "}
-        {/*noValidate creates error updation on every step */}
-        <div className="form-control" style={{ width: "85vw" }}>
-          <Flex
-            direction={["column", "row"]}
-            // spacing='36px'
-            alignItems="flex-start"
-            justifyContent="center"
-            w="100%"
-            p="3"
-          >
-            <Box
-              p="4"
-              w="100%"
-              rounded="10"
-              m="3"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              <CInput
-                id="firstName"
-                name="firstname"
-                label="First Name"
-                placeholder="First Name"
-                errors={errors.firstname}
-                register={register}
-                //{...register('firstname')}
-              />
-              <CInput
-                id="lastName"
-                label="Last Name"
-                placeholder="Last Name"
-                register={register}
-                name="lastname"
-                errors={errors.lastname}
-                //{...register('lastname')}
-              />
-              <CInput
-                id="dob"
-                label="Date of Birth"
-                placeholder="Enter your date of birth"
-                register={register}
-                name="dob"
-                errors={errors.dob}
-                type="date"
-                pattern="\d{2}-\d{2}-\d{4}"
-                //{...register('dob')}
-              />
-              <CInput
-                id="caste"
-                label="Caste"
-                placeholder="Caste"
-                name="caste"
-                register={register}
-                type="caste"
-                errors={errors.caste}
-                //{...register('caste')}
-              />
-              <CInput
-                id="religion"
-                label="Religion"
-                placeholder="Religion"
-                name="religion"
-                register={register}
-                type="religion"
-                errors={errors.religion}
-                //{...register('religion')}
-              />
-            </Box>
-            <Box
-              p="4"
-              w="100%"
-              rounded="10"
-              m="3"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              <CInput
-                id="Community"
-                name="community"
-                label="Community"
-                placeholder="Community"
-                errors={errors.community}
-                register={register}
-                //{...register('community')}
-              />
-              <CInput
-                id="nativity"
-                name="nativity"
-                label="Nativity"
-                placeholder="Nativity"
-                errors={errors.nativity}
-                register={register}
-                //{...register('nativity')}
-              />
-              <CInput
-                id="Taluk"
-                name="taluk"
-                label="Taluk"
-                placeholder="Taluk"
-                errors={errors.taluk}
-                register={register}
-                //{...register('taluk')}
-              />
-            </Box>
-          </Flex>
-          <Flex direction={["column"]}>
-              
-            <Box w='85vw'><p>Father's/Gaurdians Details</p></Box>
-           <Box display={'flex'} alignItems={"center"} flexDirection={"row"}>
-           <Box
-              p="4"
-              w="50%"
-              rounded="10"
-              m="3"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              <CInput
-                id="pName"
-                label="Parent Name"
-                placeholder="Parent Name"
-                name="pName"
-                register={register}
-                type="pName"
-                errors={errors.pName}
-                //{...register('pName')}
-              />
-              <CInput
-                id="occupation"
-                label="Occupation"
-                placeholder="Occupation"
-                name="occupation"
-                register={register}
-                type="occupation"
-                errors={errors.occupation}
-                //{...register('occupation')}
-              />
-              <CInput
-                id="email"
-                label="Email"
-                placeholder="Email"
-                name="email"
-                register={register}
-                type="email"
-                errors={errors.email}
-                //{...register('email')}
-              />
-              <CInput
-                id="parPhoneNum"
-                label="Parent's Phone Number"
-                placeholder="Parent's Phone Number"
-                type="tel"
-                name="parPhoneNum"
-                register={register}
-                errors={errors.parPhoneNum}
-                //{...register('parPhoneNum')}
-              />
-            </Box>
-            <Box p="4" flexDirection={["column"]} w="50%" rounded="10" m="3">
-              <CInput
-                id="email"
-                label="Email"
-                placeholder="Email"
-                name="email"
-                register={register}
-                type="email"
-                errors={errors.email}
-                //{...register('email')}
-              />
-              <CInput
-                id="phoneNum"
-                label="Phone Number"
-                placeholder="Phone Number"
-                type="tel"
-                name="phone"
-                register={register}
-                errors={errors.phone}
-                //{...register('phone')}
-              />
-              <CInput
-                id="annualIncome"
-                label="Annual Income"
-                placeholder="Annual Income"
-                type="number"
-                name="annualIncome"
-                register={register}
-                errors={errors.annualIncome}
-                //{...register('annualIncome')}
-              />
-            </Box>
-           </Box>
-          </Flex>
-          <Flex
-            p="4"
-            direction={["column"]}
-            w="50%"
-            rounded="10"
-            m="3"
-            //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-          ></Flex>
+      <Box
+        p="4"
+        w="100%"
+        rounded="10"
+        bg="cyan.200"
+        m='3'
+        //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+      >
+        <CInput
+          id="firstName"
+          name='firstname'
+          label= 'First Name'
+          placeholder="First Name"
+          errors={errors.firstname}
+          register = {register}
+          //{...register('firstname')}
+          />
+        <CInput
+          id="lastName"
+          label='Last Name'
+          placeholder="Last Name"
+          register = {register}
+          name='lastname'
+          errors={errors.lastname}
+          //{...register('lastname')}
+          />
+        <CInput
+          id="dob"
+          label="dob"
+          placeholder="Date of Birth"
+          register = {register}
+          name="dob"
+          errors={errors.dob}
+          //{...register('dob')}
+        />
+        <CInput
+          id="caste"
+          label='caste'
+          placeholder="caste"
+          name='caste'
+          register = {register}
+          type='caste'
+          errors={errors.caste}
+          //{...register('caste')}
+        />
+        <CInput
+          id="religion"
+          label='Religion'
+          placeholder="Religion"
+          name='religion'
+          register = {register}
+          type='religion'
+          errors={errors.religion}
+          //{...register('religion')}
+          />
+      </Box>
+      <Box
+        p="4"
+        w="100%"
+        rounded="10"
+        bg="cyan.200"
+        //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+      >
+        <CInput
+          id="community"
+          name='community'
+          label= 'community'
+          placeholder="community"
+          errors={errors.community}
+          register = {register}
+          //{...register('community')}
+        />
+        <CInput
+          id="nativity"
+          name='nativity'
+          label= 'Nativity'
+          placeholder="Nativity"
+          errors={errors.nativity}
+          register = {register}
+          //{...register('nativity')} 
+          />
+        <CInput
+          id="taluk"
+          name='taluk'
+          label= 'taluk'
+          placeholder="taluk"
+          errors={errors.taluk}
+          register = {register}
+          //{...register('taluk')}
+        />
+      </Box>
+      </Flex>
+      <Box
+        p="4"
+        w="100%"
+        rounded="10"
+        bg="cyan.200"
+        m='3'
+        //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+        >
+        <CInput
+          id="email"
+          label='Email'
+          placeholder="Email"
+          name='email'
+          register = {register}
+          type='email'
+          errors={errors.email}
+          //{...register('email')}
+        />
+        <CInput
+          id="phoneNum"
+          label="Phone Number"
+          placeholder="Phone Number"
+          type='tel'
+          name='phone'
+          register = {register}
+          errors={errors.phone}
+          //{...register('phone')}
+        />
+        <CInput
+          id="annualIncome"
+          label="Annual Income"
+          placeholder="Annual Income"
+          type='number'
+          name='annualIncome'
+          register = {register}
+          errors={errors.annualIncome}
+          //{...register('annualIncome')}
+        />
+        </Box>  
+       <Flex>
+        <Box
+        p="4"
+        w="100%"
+        rounded="10"
+        bg="cyan.200"
+        m='3'
+        //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+        >  Father's/Gaurdians Details
+        <CInput
+          id="gName"
+          label='Guardian Name'
+          placeholder="gName"
+          name='gName'
+          register = {register}
+          type='gName'
+          errors={errors.gName}
+          //{...register('gName')}
+        />
+         <CInput
+          id="occupation"
+          label='occupation'
+          placeholder="occupation"
+          name='occupation'
+          register = {register}
+          type='occupation'
+          errors={errors.occupation}
+          //{...register('occupation')}
+        />
 
-          <Flex direction={["column", "row"]} spacing="36px" w="100%" m="3">
-            <Box
-              p="4"
-              w="100%"
-              rounded="10"
-              m="3"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              {" "}
-              <h3>Permanent Address</h3>
-              <CInput
-                id="address-line-1"
-                label="My Address Line 1"
-                placeholder="Address Line 1"
-                name="address1"
-                errors={errors.address1}
-                register={register}
-                //{...register('address.line1')}
-              />
-              <CInput
-                id="address-line2"
-                label="My Address Line 2"
-                placeholder="Address Line 2"
-                name="address2"
-                register={register}
-                errors={errors.address2}
-                //{...register('address.line2')}
-              />
-              <CInput
-                id="address-line3"
-                label="My Address Line 3"
-                placeholder="Address Line 3"
-                name="address3"
-                register={register}
-                errors={errors.address3}
-                //{...register('address.line3')}
-              />
-              <CInput
-                id="pin"
-                label="PIN"
-                placeholder="PIN"
-                name="pin"
-                register={register}
-                type="number"
-                errors={errors.pin}
-                //{...register('pin')}
-              />
-              <CInput
-                id="District"
-                label="district"
-                placeholder="district"
-                name="district"
-                register={register}
-                type="district"
-                errors={errors.district}
-                //{...register('district')}
-              />
-              <CInput
-                id="state"
-                label="state"
-                placeholder="state"
-                name="state"
-                register={register}
-                type="state"
-                errors={errors.state}
-                //{...register('state')}
-              />
-            </Box>
-            <Box
-              p="4"
-              w="100%"
-              rounded="10"
-              m="3"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              {" "}
-              <h3>Present Address Details</h3>
-              <CInput
-                id="address-line-1"
-                label="My Address Line 1"
-                placeholder="Address Line 1"
-                name="address1"
-                errors={errors.address1}
-                register={register}
-                //{...register('address.line1')}
-              />
-              <CInput
-                id="address-line2"
-                label="My Address Line 2"
-                placeholder="Address Line 2"
-                name="address2"
-                register={register}
-                errors={errors.address2}
-                //{...register('address.line2')}
-              />
-              <CInput
-                id="address-line3"
-                label="My Address Line 3"
-                placeholder="Address Line 3"
-                name="address3"
-                register={register}
-                errors={errors.address3}
-                //{...register('address.line3')}
-              />
-              <CInput
-                id="pin"
-                label="PIN"
-                placeholder="PIN"
-                name="pin"
-                register={register}
-                type="number"
-                errors={errors.pin}
-                //{...register('pin')}
-              />
-              <CInput
-                id="District"
-                label="district"
-                placeholder="district"
-                name="district"
-                register={register}
-                type="district"
-                errors={errors.district}
-                //{...register('district')}
-              />
-              <CInput
-                id="state"
-                label="state"
-                placeholder="state"
-                name="state"
-                register={register}
-                type="state"
-                errors={errors.state}
-                //{...register('state')}
-              />
-            </Box>
-          </Flex>
-          <Flex direction={["column", "row"]} spacing="36px" w="100%" m="3">
-            <Box
-              p="4"
-              m="3"
-              w="100%"
-              rounded="10"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              {" "}
-              <h2> Qualifying Examination Details</h2>
-              <CInput
-                id="qualifyingExam"
-                name="qualifyingExam"
-                label="Qualifying Exam"
-                placeholder="Qualifying Exam"
-                errors={errors.qualifyingExam}
-                register={register}
-                //{...register('qualifyingExam')}
-              />
-              <CInput
-                id="qualifyingBoard"
-                label="Qualifying Board"
-                placeholder="Qualifying Board"
-                register={register}
-                name="qualifyingBoard"
-                errors={errors.qualifyingBoard}
-                //{...register('qualifyingBoard')}
-              />
-              <CInput
-                id="instituteName"
-                label="instituteName"
-                placeholder="instituteName"
-                name="instituteName"
-                register={register}
-                type="instituteName"
-                errors={errors.instituteName}
-                //{...register('instituteName')}
-              />
-            </Box>
-            <Box
-              p="4"
-              m="3"
-              w="100%"
-              rounded="10"
-              //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-            >
-              {" "}
-              <h2> Qualifying Examination Details</h2>
-              <CInput
-                id="regNumQualExam"
-                name="regNumQualExam"
-                label="regNumQualExam"
-                placeholder="regNumQualExam"
-                errors={errors.regNumQualExam}
-                register={register}
-                //{...register('regNumQualExam')}
-              />
-              <CInput
-                id="percentage"
-                name="percentage"
-                label="percentage"
-                placeholder="percentage"
-                errors={errors.percentage}
-                register={register}
-                //{...register('percentage')}
-              />
-              <CInput
-                id="passYear"
-                name="passYear"
-                label="passYear"
-                placeholder="passYear"
-                errors={errors.passYear}
-                register={register}
-                //{...register('passYear')}
-              />
-            </Box>
-          </Flex>
-        </div>
+        <CInput
+          id="gEmail"
+          label="Guaridian Email"
+          placeholder="Email"
+          name='gEmail'
+          register = {register}
+          type='gEmail'
+          errors={errors.gEmail}
+          //{...register('gEmail')}
+        />
+        <CInput
+          id="gPhoneNum"
+          label="Parent's Phone Number"
+          placeholder="Parent's Phone Number"
+          type='tel'
+          name='gPhoneNum'
+          register = {register}
+          errors={errors.gPhoneNum}
+          //{...register('gPhoneNum')}
+        />
+      </Box>   </Flex>
+        <Flex 
+          direction={['column', 'row']} 
+          spacing='36px'
+          w='100%'
+          m='3'
+        >
+          <Box
+          p="4"
+          w="100%"
+          rounded="10"
+          m='3'
+          bg="cyan.200"
+          //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+          > <h3>Permanent Address</h3>
+          <CInput
+          id="perm-address-line-1"
+          label ="My Address Line 1"
+          placeholder="Address Line 1"
+          name='perm-Address1'
+          errors={errors.permAddress1}
+          register = {register}
+          //{...register('address.line1')}
+        />
+        <CInput
+          id="perm-address-line2"
+          label ="My Address Line 2"
+          placeholder="Address Line 2"
+          name="permAddress2"
+          register = {register}
+          errors={errors.permAddress2}
+          //{...register('address.line2')}
+        />
+        <CInput
+          id="perm-address-line3"
+          label ="My Address Line 3"
+          placeholder="Address Line 3"
+          name="permAddress3"
+          register = {register}
+          errors={errors.permAddress3}
+          //{...register('address.line3')}
+        />
+        <CInput
+          id="pin"
+          label='PIN Code'
+          placeholder="Enter you PIN"
+          name='pin'
+          register = {register}
+          type='number'
+          errors={errors.pin}
+          //{...register('pin')}
+        />
+         <CInput
+          id="District"
+          label='district'
+          placeholder="district"
+          name='district'
+          register = {register}
+          type='district'
+          errors={errors.district}
+          //{...register('district')}
+        />
+         <CInput
+          id="state"
+          label='state'
+          placeholder="state"
+          name='state'
+          register = {register}
+          type='state'
+          errors={errors.state}
+          //{...register('state')}
+        />
+        </Box>
+        <Box
+          p="4"
+          w="100%"
+          rounded="10"
+          bg="cyan.200"
+          m='3'
+          //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+          > <h3>Present Address Details</h3>
+          <CInput
+          id="pres-address-line-1"
+          label ="My Address Line 1"
+          placeholder="Address Line 1"
+          name='presAddress1'
+          errors={errors.presAddress1}
+          register = {register}
+          //{...register('address.line1')}
+        />
+        <CInput
+          id="pres-address-line2"
+          label ="My Address Line 2"
+          placeholder="Address Line 2"
+          name="presAddress2"
+          register = {register}
+          errors={errors.presAddress2}
+          //{...register('address.line2')}
+        />
+        <CInput
+          id="pres-address-line3"
+          label ="My Address Line 3"
+          placeholder="Address Line 3"
+          name="presAddress3"
+          register = {register}
+          errors={errors.presAddress3}
+          //{...register('address.line3')}
+        />
+        <CInput
+          id="presPin"
+          label='PIN'
+          placeholder="PIN"
+          name='presPin'
+          register = {register}
+          type='number'
+          errors={errors.presPin}
+          //{...register('pin')}
+        />
+         <CInput
+          id="presDistrict"
+          label='district'
+          placeholder="district"
+          name='presDistrict'
+          register = {register}
+          type='string'
+          errors={errors.presDistrict}
+          //{...register('district')}
+        />
+         <CInput
+          id="presState"//change this name
+          label='state'
+          placeholder="state"
+          name='preState'
+          register = {register}
+          type='string'
+          errors={errors.presState}
+          //{...register('state')}
+        />
+      </Box>
+    </Flex>
+    <Flex
+      direction={['column', 'row']} 
+      spacing='36px'
+      w='100%'
+      m='3'
+      > 
+      <Box
+        p="4"
+        m='3'
+        w="100%"
+        rounded="10"
+        bg="cyan.200"
+        //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+      > <h2> Qualifying Examination Details</h2>
+        <CInput
+          id="qualifyingExam"
+          name='qualifyingExam'
+          label= 'Qualifying Exam'
+          placeholder="Qualifying Exam"
+          errors={errors.qualifyingExam}
+          register = {register}
+          //{...register('qualifyingExam')}
+        />
+        <CInput
+          id="qualifyingBoard"
+          label='Qualifying Board'
+          placeholder="Qualifying Board"
+          register = {register}
+          name='qualifyingBoard'
+          errors={errors.qualifyingBoard}
+          //{...register('qualifyingBoard')}
+        />
+        <CInput
+          id="instituteName"
+          label='instituteName'
+          placeholder="instituteName"
+          name='instituteName'
+          register = {register}
+          type='instituteName'
+          errors={errors.instituteName}
+          //{...register('instituteName')}
+        />
+      </Box>
+      <Box
+        p="4"
+        m='3'
+        w="100%"
+        rounded="10"
+        bg="cyan.200"
+        //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+      > <h2> Qualifying Examination Details</h2>
+        <CInput
+          id="regNumQualExam"
+          name='regNumQualExam'
+          label= 'regNumQualExam'
+          placeholder="regNumQualExam"
+          errors={errors.regNumQualExam}
+          register = {register}
+          //{...register('regNumQualExam')}
+        />
+        <CInput
+          id="percentage"
+          name='percentage'
+          label= 'percentage'
+          placeholder="percentage"
+          errors={errors.percentage}
+          register = {register}
+          //{...register('percentage')}
+        />
+        <CInput
+          id="passYear"
+          name='passYear'
+          label= 'passYear'
+          placeholder="passYear"
+          errors={errors.passYear}
+          register = {register}
+          //{...register('passYear')}
+         />
+       
+      </Box> 
+  </Flex>
+      </div>
         {/* Conditional rendering based on formData 
         {formData ? (
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
