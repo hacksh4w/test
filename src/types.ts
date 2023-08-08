@@ -1,7 +1,6 @@
 // types.ts
 export interface FormValues {
-    firstname: string;
-    lastname: string;
+    studName: string;
     email: string;
     caste: string;
     religion: string;

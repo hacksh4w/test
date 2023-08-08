@@ -5,18 +5,12 @@ const canOnlyContain = `can only contains alphabates`;
 const schema = yup.object().shape({
 
   //Personal Details
-  firstName: yup
+  studName: yup
     .string()
     .trim()
     .max(30)
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
-  lastName: yup
-    .string()
-    .trim()
-    .max(50)
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Last Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Name ${canOnlyContain}`),
     //Native Details
   caste: yup
     .string()
@@ -24,25 +18,25 @@ const schema = yup.object().shape({
     .max(20)
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
-    religion: yup
+  religion: yup
     .string()
     .max(30)
     .trim()
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
-    community: yup
+  community: yup
     .string()
     .trim()
     .max(20)
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `Community ${canOnlyContain}`),
-    nativity: yup
+  nativity: yup
     .string()
     .max(20)
     .trim()
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `Nativity ${canOnlyContain}`),
-    taluk: yup
+  taluk: yup
     .string()
     .max(30)
     .trim()
@@ -79,10 +73,6 @@ const schema = yup.object().shape({
     .max(50)
     .email('Email is not valid')
     .required(fieldRequired), 
-  annualIncome :yup
-  .number()
-  .typeError("Please enter a valid phone value") ,
- // .required(fieldRequired),
   phone: yup
     .number()
     .typeError("Please enter a valid phone number") ,
@@ -90,7 +80,10 @@ const schema = yup.object().shape({
     // Phone Regex : /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
     //.string().phone().required();
     //.matches(/^\+918[1-9][0-9]{8,11}$/, 'Must use +91 format')
-  
+  annualIncome :yup
+    .number()
+    .typeError("Please enter a valid phone value") ,
+ // .required(fieldRequired),
   dob : yup
   .date()
   //.required(fieldRequired)
@@ -109,31 +102,31 @@ const schema = yup.object().shape({
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
   occupation : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
   gEmail : yup
-  .string()
-  .trim()
-  .max(50)
-  .email('Email is not valid')
-  .required(fieldRequired), 
+    .string()
+    .trim()
+    .max(50)
+    .email('Email is not valid')
+    .required(fieldRequired), 
   gPhoneNume : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
 
   // Permanent Address Details
   permAddress1 : yup
-  .string()
-  .max(30)
-  .trim()
-  .required(fieldRequired)
-  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
   permAddress2 : yup
   .string()
   .max(30)

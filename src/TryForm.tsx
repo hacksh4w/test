@@ -13,8 +13,7 @@ import { FormValues } from "./types";
 
 export const TryForm = () => {
   const defaultValues: FormValues = {
-    firstname: "",
-    lastname: "",
+    studName: "",
     email: "",
     caste: "",
     religion: "",
@@ -126,22 +125,13 @@ export const TryForm = () => {
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
               <CInput
-                id="firstName"
-                name="firstname"
-                label="First Name"
-                placeholder="First Name"
-                errors={errors.firstname}
+                id="studName"
+                name="studName"
+                label="Full Name"
+                placeholder="Name"
+                errors={errors.studName}
                 register={register}
-                //{...register('firstname')}
-              />
-              <CInput
-                id="lastName"
-                label="Last Name"
-                placeholder="Last Name"
-                register={register}
-                name="lastname"
-                errors={errors.lastname}
-                //{...register('lastname')}
+                //{...register('studName')}
               />
               <CInput
                 id="dob"
