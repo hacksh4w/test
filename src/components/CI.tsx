@@ -31,14 +31,16 @@ import { Input as ChakraInput, FormLabel, FormControl, InputProps as ChakraInput
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 import { UseFormRegister } from 'react-hook-form';
 import { FormValues } from '../types';
-//import { forwardRef } from "@chakra-ui/react";
+import { forwardRef } from "@chakra-ui/react";
 interface InputProps extends ChakraInputProps {
-   // name: string;
+    //name: string;
+    name :  keyof FormValues;
     req ?: string;
     label?: string;
     placeholder?: string;
-    register?: UseFormRegister<FormValues>;
+    register: UseFormRegister<FormValues>;
     errors?: FieldError | undefined;
+    type?: 'email'| 'text' | 'tel'| string;
     //errors?: FieldError | Merge<FieldError, FieldErrorsImpl> | undefined;
 }
 
@@ -46,23 +48,26 @@ interface InputProps extends ChakraInputProps {
    //name, label, register = () => {}, req, error = null, ...rest
     
    //forwardRef(({ label, register = () => {}, req, placeholder, errors = null, ...rest}, ref)=>{
-    const CInput: React.FC<InputProps> = ({ label, register, placeholder, errors = null, ...rest }) => {
-        const name = rest.name; // Extract the "name" prop from "rest"
+    const CInput: React.FC<InputProps> = forwardRef(({ name,type, label, register = () => {}, placeholder, errors = null, ...rest }, ref) => {
+        ///const name = rest.name; // Extract the "name" prop from "rest"
         return (
           <FormControl isInvalid={!!errors}>
-            {label && <FormLabel>{label}</FormLabel>}
+            {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
             <ChakraInput
-           //   name={name}
+              name={name as string}
+              id={name as string}
               placeholder={placeholder}
               focusBorderColor="pink.500"
               bgColor="gray.900"
+              isRequired={true}
+              type={type}
               variant="filled"
               _hover={{
                 bgColor: 'gray.900'
               }}
-              size="lg"
-              {...register(name, { required: rest.required })}
-              {...rest}
+             // {...register(name)}
+             {...(name && register(name, { required: rest.required }))}
+             {...rest}
             />
             {errors && (
               <FormErrorMessage>
@@ -71,6 +76,5 @@ interface InputProps extends ChakraInputProps {
             )}
           </FormControl>
         );
-      };
-      
-      export default CInput;
+            })
+export default CInput;
