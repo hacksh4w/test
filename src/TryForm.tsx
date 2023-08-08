@@ -96,25 +96,32 @@ export const TryForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form
+        onSubmit={handleSubmit(onSubmit, onError)}
+        style={{
+          width: "100vw",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          marginTop: "100px",
+        }}
+      >
         {" "}
         {/*noValidate creates error updation on every step */}
-        <div
-          className="form-control"
-          // style={{width : '100vw'}}
-        >
+        <div className="form-control" style={{ width: "85vw" }}>
           <Flex
             direction={["column", "row"]}
-            //spacing='36px'
-            alignItems="center"
-            w="80vw"
+            // spacing='36px'
+            alignItems="flex-start"
+            justifyContent="center"
+            w="100%"
             p="3"
           >
             <Box
               p="4"
               w="100%"
               rounded="10"
-              bg="cyan.200"
               m="3"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
@@ -138,8 +145,8 @@ export const TryForm = () => {
               />
               <CInput
                 id="dob"
-                label="dob"
-                placeholder="dob"
+                label="Date of Birth"
+                placeholder="Enter your date of birth"
                 register={register}
                 name="dob"
                 errors={errors.dob}
@@ -149,8 +156,8 @@ export const TryForm = () => {
               />
               <CInput
                 id="caste"
-                label="caste"
-                placeholder="caste"
+                label="Caste"
+                placeholder="Caste"
                 name="caste"
                 register={register}
                 type="caste"
@@ -172,14 +179,14 @@ export const TryForm = () => {
               p="4"
               w="100%"
               rounded="10"
-              bg="cyan.200"
+              m="3"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
               <CInput
-                id="community"
+                id="Community"
                 name="community"
-                label="community"
-                placeholder="community"
+                label="Community"
+                placeholder="Community"
                 errors={errors.community}
                 register={register}
                 //{...register('community')}
@@ -194,70 +201,31 @@ export const TryForm = () => {
                 //{...register('nativity')}
               />
               <CInput
-                id="taluk"
+                id="Taluk"
                 name="taluk"
-                label="taluk"
-                placeholder="taluk"
+                label="Taluk"
+                placeholder="Taluk"
                 errors={errors.taluk}
                 register={register}
                 //{...register('taluk')}
               />
             </Box>
           </Flex>
-          <Box
-            p="4"
-            w="100%"
-            rounded="10"
-            bg="cyan.200"
-            m="3"
-            //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-          >
-            <CInput
-              id="email"
-              label="Email"
-              placeholder="Email"
-              name="email"
-              register={register}
-              type="email"
-              errors={errors.email}
-              //{...register('email')}
-            />
-            <CInput
-              id="phoneNum"
-              label="Phone Number"
-              placeholder="Phone Number"
-              type="tel"
-              name="phone"
-              register={register}
-              errors={errors.phone}
-              //{...register('phone')}
-            />
-            <CInput
-              id="annualIncome"
-              label="Annual Income"
-              placeholder="Annual Income"
-              type="number"
-              name="annualIncome"
-              register={register}
-              errors={errors.annualIncome}
-              //{...register('annualIncome')}
-            />
-          </Box>
-          <Flex>
-            <Box
+          <Flex direction={["column"]}>
+              
+            <Box w='85vw'><p>Father's/Gaurdians Details</p></Box>
+           <Box display={'flex'} alignItems={"center"} flexDirection={"row"}>
+           <Box
               p="4"
-              w="100%"
+              w="50%"
               rounded="10"
-              bg="cyan.200"
               m="3"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
-              {" "}
-              Father's/Gaurdians Details
               <CInput
                 id="pName"
-                label="pName"
-                placeholder="pName"
+                label="Parent Name"
+                placeholder="Parent Name"
                 name="pName"
                 register={register}
                 type="pName"
@@ -266,8 +234,8 @@ export const TryForm = () => {
               />
               <CInput
                 id="occupation"
-                label="occupation"
-                placeholder="occupation"
+                label="Occupation"
+                placeholder="Occupation"
                 name="occupation"
                 register={register}
                 type="occupation"
@@ -294,15 +262,56 @@ export const TryForm = () => {
                 errors={errors.parPhoneNum}
                 //{...register('parPhoneNum')}
               />
-            </Box>{" "}
+            </Box>
+            <Box p="4" flexDirection={["column"]} w="50%" rounded="10" m="3">
+              <CInput
+                id="email"
+                label="Email"
+                placeholder="Email"
+                name="email"
+                register={register}
+                type="email"
+                errors={errors.email}
+                //{...register('email')}
+              />
+              <CInput
+                id="phoneNum"
+                label="Phone Number"
+                placeholder="Phone Number"
+                type="tel"
+                name="phone"
+                register={register}
+                errors={errors.phone}
+                //{...register('phone')}
+              />
+              <CInput
+                id="annualIncome"
+                label="Annual Income"
+                placeholder="Annual Income"
+                type="number"
+                name="annualIncome"
+                register={register}
+                errors={errors.annualIncome}
+                //{...register('annualIncome')}
+              />
+            </Box>
+           </Box>
           </Flex>
+          <Flex
+            p="4"
+            direction={["column"]}
+            w="50%"
+            rounded="10"
+            m="3"
+            //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
+          ></Flex>
+
           <Flex direction={["column", "row"]} spacing="36px" w="100%" m="3">
             <Box
               p="4"
               w="100%"
               rounded="10"
               m="3"
-              bg="cyan.200"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
               {" "}
@@ -369,7 +378,6 @@ export const TryForm = () => {
               p="4"
               w="100%"
               rounded="10"
-              bg="cyan.200"
               m="3"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
@@ -440,7 +448,6 @@ export const TryForm = () => {
               m="3"
               w="100%"
               rounded="10"
-              bg="cyan.200"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
               {" "}
@@ -479,7 +486,6 @@ export const TryForm = () => {
               m="3"
               w="100%"
               rounded="10"
-              bg="cyan.200"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
               {" "}
