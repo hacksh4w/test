@@ -28,10 +28,13 @@ export default CInput;
 */}
 
 import { Input as ChakraInput, FormLabel, FormControl, InputProps as ChakraInputProps, FormErrorMessage } from "@chakra-ui/react"
-import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
+import { FieldError, 
+ // FieldErrorsImpl, Merge 
+} from 'react-hook-form'
 import { UseFormRegister } from 'react-hook-form';
 import { FormValues } from '../types';
 import { forwardRef } from "@chakra-ui/react";
+
 interface InputProps extends ChakraInputProps {
     //name: string;
     name :  keyof FormValues;

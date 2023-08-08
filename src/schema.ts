@@ -3,6 +3,8 @@ const fieldRequired =  `This field is Required!`;   //instead of this, try label
 const canOnlyContain = `can only contains alphabates`;
 
 const schema = yup.object().shape({
+
+  //Personal Details
   firstName: yup
     .string()
     .trim()
@@ -15,12 +17,7 @@ const schema = yup.object().shape({
     .max(50)
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `Last Name ${canOnlyContain}`),
-  email: yup
-    .string()
-    .trim()
-    .max(50)
-    .email('Email is not valid')
-    .required(fieldRequired),
+    //Native Details
   caste: yup
     .string()
     .trim()
@@ -38,19 +35,19 @@ const schema = yup.object().shape({
     .trim()
     .max(20)
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Community ${canOnlyContain}`),
     nativity: yup
     .string()
     .max(20)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Nativity ${canOnlyContain}`),
     taluk: yup
     .string()
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Taluk ${canOnlyContain}`),
   /* address: yup  //find way to do it for each line of address
     .string()
     .trim()
@@ -74,6 +71,14 @@ const schema = yup.object().shape({
     .trim()
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`), */
+
+ //Relevent Details
+  email: yup
+    .string()
+    .trim()
+    .max(50)
+    .email('Email is not valid')
+    .required(fieldRequired), 
   annualIncome :yup
   .number()
   .typeError("Please enter a valid phone value") ,
@@ -93,6 +98,145 @@ const schema = yup.object().shape({
   .transform(v => (v instanceof Date && !isNaN(v) ? v : null)),
   //.date().transform((curr, orig) => orig === '' ? null : curr).required('Mandatory field message')
   //.date().nullable().required().typeError('Invalid Date') */
+
+  
+  // Father/Guardian Details
+  gName : yup
+    .string()
+    .max(30)
+    .trim()
+    .required(fieldRequired)
+    .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  occupation : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  gEmail : yup
+  .string()
+  .trim()
+  .max(50)
+  .email('Email is not valid')
+  .required(fieldRequired), 
+  gPhoneNume : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+
+  // Permanent Address Details
+  permAddress1 : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  permAddress2 : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  permAddress3 : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  pin : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  district : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  state : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+
+  // Present Address Details
+  presAddress1 : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  presAddress2 : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  presAddress3 : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  presPin : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  presDistrict : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  presState : yup
+  .string()
+  .max(30)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+
+
+  //Qualification Exam Details
+  qualifyingExam : yup
+  .string()
+  .max(50)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  qualifyingBoard : yup
+  .string()
+  .max(20)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+  instituteName : yup
+  .string()
+  .max(80)
+  .trim()
+  .required(fieldRequired)
+  .matches(/^[a-z ,.'-]+$/i, `First Name ${canOnlyContain}`),
+ // regNumQualExam : yup
+
+  //percentage : yup
+
+  //passYear : yup  
+
+
+  
+  // KEAM Alottment Specific Details
+//  dob : yup
+ // dob : yup
+  //dob : yup
+  // dob : yup
+
+
 });
 
 //const defaultValues = schema.cast({}); // Use schema.cast to provide default values

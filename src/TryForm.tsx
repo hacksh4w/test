@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
-import { Stack, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { useEffect } from 'react';
 import { useForm, FieldErrors, useFormState } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -138,7 +138,7 @@ export const TryForm = () => {
         <CInput
           id="dob"
           label="dob"
-          placeholder="dob"
+          placeholder="Date of Birth"
           register = {register}
           name="dob"
           errors={errors.dob}
@@ -250,14 +250,14 @@ export const TryForm = () => {
         //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
         >  Father's/Gaurdians Details
         <CInput
-          id="pName"
-          label='pName'
-          placeholder="pName"
-          name='pName'
+          id="gName"
+          label='Guardian Name'
+          placeholder="gName"
+          name='gName'
           register = {register}
-          type='pName'
-          errors={errors.pName}
-          //{...register('pName')}
+          type='gName'
+          errors={errors.gName}
+          //{...register('gName')}
         />
          <CInput
           id="occupation"
@@ -271,24 +271,24 @@ export const TryForm = () => {
         />
 
         <CInput
-          id="email"
-          label='Email'
+          id="gEmail"
+          label="Guaridian Email"
           placeholder="Email"
-          name='email'
+          name='gEmail'
           register = {register}
-          type='email'
-          errors={errors.email}
-          //{...register('email')}
+          type='gEmail'
+          errors={errors.gEmail}
+          //{...register('gEmail')}
         />
         <CInput
-          id="parPhoneNum"
+          id="gPhoneNum"
           label="Parent's Phone Number"
           placeholder="Parent's Phone Number"
           type='tel'
-          name='parPhoneNum'
+          name='gPhoneNum'
           register = {register}
-          errors={errors.parPhoneNum}
-          //{...register('parPhoneNum')}
+          errors={errors.gPhoneNum}
+          //{...register('gPhoneNum')}
         />
       </Box>   </Flex>
         <Flex 
@@ -306,36 +306,36 @@ export const TryForm = () => {
           //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
           > <h3>Permanent Address</h3>
           <CInput
-          id="address-line-1"
+          id="perm-address-line-1"
           label ="My Address Line 1"
           placeholder="Address Line 1"
-          name='address1'
-          errors={errors.address1}
+          name='perm-Address1'
+          errors={errors.permAddress1}
           register = {register}
           //{...register('address.line1')}
         />
         <CInput
-          id="address-line2"
+          id="perm-address-line2"
           label ="My Address Line 2"
           placeholder="Address Line 2"
-          name="address2"
+          name="permAddress2"
           register = {register}
-          errors={errors.address2}
+          errors={errors.permAddress2}
           //{...register('address.line2')}
         />
         <CInput
-          id="address-line3"
+          id="perm-address-line3"
           label ="My Address Line 3"
           placeholder="Address Line 3"
-          name="address3"
+          name="permAddress3"
           register = {register}
-          errors={errors.address3}
+          errors={errors.permAddress3}
           //{...register('address.line3')}
         />
         <CInput
           id="pin"
-          label='PIN'
-          placeholder="PIN"
+          label='PIN Code'
+          placeholder="Enter you PIN"
           name='pin'
           register = {register}
           type='number'
@@ -372,65 +372,65 @@ export const TryForm = () => {
           //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
           > <h3>Present Address Details</h3>
           <CInput
-          id="address-line-1"
+          id="pres-address-line-1"
           label ="My Address Line 1"
           placeholder="Address Line 1"
-          name='address1'
-          errors={errors.address1}
+          name='presAddress1'
+          errors={errors.presAddress1}
           register = {register}
           //{...register('address.line1')}
         />
         <CInput
-          id="address-line2"
+          id="pres-address-line2"
           label ="My Address Line 2"
           placeholder="Address Line 2"
-          name="address2"
+          name="presAddress2"
           register = {register}
-          errors={errors.address2}
+          errors={errors.presAddress2}
           //{...register('address.line2')}
         />
         <CInput
-          id="address-line3"
+          id="pres-address-line3"
           label ="My Address Line 3"
           placeholder="Address Line 3"
-          name="address3"
+          name="presAddress3"
           register = {register}
-          errors={errors.address3}
+          errors={errors.presAddress3}
           //{...register('address.line3')}
         />
         <CInput
-          id="pin"
+          id="presPin"
           label='PIN'
           placeholder="PIN"
-          name='pin'
+          name='presPin'
           register = {register}
           type='number'
-          errors={errors.pin}
+          errors={errors.presPin}
           //{...register('pin')}
         />
          <CInput
-          id="District"
+          id="presDistrict"
           label='district'
           placeholder="district"
-          name='district'
+          name='presDistrict'
           register = {register}
-          type='district'
-          errors={errors.district}
+          type='string'
+          errors={errors.presDistrict}
           //{...register('district')}
         />
          <CInput
-          id="state"
+          id="presState"//change this name
           label='state'
           placeholder="state"
-          name='state'
+          name='preState'
           register = {register}
-          type='state'
-          errors={errors.state}
+          type='string'
+          errors={errors.presState}
           //{...register('state')}
         />
-        </Box>
-        </Flex>
-        <Flex
+      </Box>
+    </Flex>
+    <Flex
       direction={['column', 'row']} 
       spacing='36px'
       w='100%'
