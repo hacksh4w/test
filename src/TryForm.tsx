@@ -150,6 +150,7 @@ export const TryForm = () => {
                 register={register}
                 name="dob"
                 errors={errors.dob}
+                type='date'
                 //{...register('dob')}
               />
               <CInput
