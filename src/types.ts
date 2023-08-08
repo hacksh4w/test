@@ -1,15 +1,19 @@
-import { DateSchema } from "yup";
-
 // types.ts
 export interface FormValues {
     firstname: string;
     lastname: string;
     email: string;
+    caste: string;
+    religion: string;
+    community: string;
+    nativity: string;
+    taluk: string;
   //  channel: string;
     address1: string;
     address2: string;
-    age: number;
-    dob: Date;
+    //age: number;
+    dob: Date | null ;
+    annualIncome : number;
     phone: number;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    // resolver: Resolver<FormValues> | undefined

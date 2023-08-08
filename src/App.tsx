@@ -8,7 +8,9 @@ import { schema } from "./schema";
 
 
 export default function App() {
-  const form = useForm<FormValues>({ mode: 'onTouched', resolver : yupResolver(schema) }); // By default, the validation is triggered on every change of the input value (mode: 'onChange')
+  const form = useForm<FormValues>({ mode: 'onTouched', 
+ resolver : yupResolver(schema) 
+}); // By default, the validation is triggered on every change of the input value (mode: 'onChange')
 
   return (
     <>

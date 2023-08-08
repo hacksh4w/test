@@ -57,13 +57,13 @@ interface InputProps extends ChakraInputProps {
               name={name as string}
               id={name as string}
               placeholder={placeholder}
-              focusBorderColor="pink.500"
-              bgColor="gray.900"
+              focusBorderColor="grey.700"
+              bgColor="red.200"
               isRequired={true}
               type={type}
               variant="filled"
               _hover={{
-                bgColor: 'gray.900'
+                bgColor: 'grey.900'
               }}
              // {...register(name)}
              {...(name && register(name, { required: rest.required }))}
