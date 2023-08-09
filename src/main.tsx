@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ChakraProvider>
       <App /> 
-        <PDFDoc {...inputValues} />
+        {/* <PDFDoc {...inputValues} /> */}
     </ChakraProvider>
   </React.StrictMode>,
 )

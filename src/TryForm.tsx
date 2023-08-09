@@ -12,60 +12,58 @@ import { PDFViewer } from '@react-pdf/renderer';
 import { DevTool } from "@hookform/devtools";
 import CInput from "./components/CI";
 import { FormValues } from "./types";
+const defaultValues: FormValues = {
+  studName: "",
+  email: "",
+  caste: "",
+  religion: "",
+  community: "",
+  nativity: "",
+  taluk: "",
+  annualIncome: 0,
+  dob : new Date(),
+  //dob: null, // Set to the desired default date
+  phone: 0,
+  gName : "",
+  occupation : "",
+  gEmail : "",
+  gPhoneNum : 0,
+  permAddress1 : "",
+  permAddress2 : "",
+  permAddress3 : "",
+  pin : 0,
+  district : "",
+  state : "",
+  presAddress1 : "",
+  presAddress2 : "",
+  presAddress3 : "", 
+  presPin : 0,
+  presDistrict : "",
+  presState : "",
+  qualifyingExam : "",
+  qualifyingBoard : "",
+  instituteName : "",
+  regNumQualExam : 0,  
+//  percentage : 
+  passYear : 0,
+  rollNumKeam : 0,
+  appNumKeam : 0,
+ // allotted branch :   <Select />
+
+};
 
 
 export const TryForm = () => {
-  const defaultValues: FormValues = {
-    studName: "",
-    email: "",
-    caste: "",
-    religion: "",
-    community: "",
-    nativity: "",
-    taluk: "",
-    annualIncome: 0,
-    dob : new Date(),
-    //dob: null, // Set to the desired default date
-    phone: 0,
-    gName : "",
-    occupation : "",
-    gEmail : "",
-    gPhoneNum : 0,
-    permAddress1 : "",
-    permAddress2 : "",
-    permAddress3 : "",
-    pin : 0,
-    district : "",
-    state : "",
-    presAddress1 : "",
-    presAddress2 : "",
-    presAddress3 : "", 
-    presPin : 0,
-    presDistrict : "",
-    presState : "",
-    qualifyingExam : "",
-    qualifyingBoard : "",
-    instituteName : "",
-    regNumQualExam : 0,  
-  //  percentage : 
-    passYear : 0,
-    rollNumKeam : 0,
-    appNumKeam : 0,
-   // allotted branch :   <Select />
-
-  };
-
-  const [showPDF, setShowPDF] = useState(false);
-  const [pdfValues, setPdfValues] = useState<FormValues>(null);
-
   const form = useForm<FormValues>({
     mode: "onTouched",
     resolver: yupResolver(schema),
     defaultValues :defaultValues,
   });
+
+  const [showPDF, setShowPDF] = useState(false);
+  const [pdfValues, setPdfValues] = useState<FormValues>();
   // mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
   // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
-
   const {
     register,
     control,
@@ -116,7 +114,8 @@ export const TryForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted", data);
-    handleGetValues;
+    handleGetValues()
+    console.log(pdfValues);
     //might set input form values
     //setValue(data);
 
