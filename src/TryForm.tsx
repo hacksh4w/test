@@ -1,16 +1,18 @@
 import { Button } from "@chakra-ui/button";
 import { Box } from "@chakra-ui/layout";
 import { Flex } from "@chakra-ui/react";
+import { useState } from "react";
 //import { Select } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useForm, FieldErrors, useFormState } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
-///import PDFDoc from '../PDFDoc';
-//import { PDFViewer } from '@react-pdf/renderer';
+import PDFDoc from './PDFDoc'
+import { PDFViewer } from '@react-pdf/renderer';
 import { DevTool } from "@hookform/devtools";
 import CInput from "./components/CI";
 import { FormValues } from "./types";
+
 
 export const TryForm = () => {
   const defaultValues: FormValues = {
@@ -53,6 +55,9 @@ export const TryForm = () => {
 
   };
 
+  const [showPDF, setShowPDF] = useState(false);
+  const [pdfValues, setPdfValues] = useState<FormValues>(null);
+
   const form = useForm<FormValues>({
     mode: "onTouched",
     resolver: yupResolver(schema),
@@ -87,10 +92,6 @@ export const TryForm = () => {
   // console.log({ formErrors, isDirty, touchedFields, dirtyFields, isValid });
   // console.log({ isSubmitted, isSubmitSuccessful });
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Form submitted", data);
-    console.log("Get values", getValues());
-  };
 
   const onError = (formErrors: FieldErrors<FormValues>) => {
     console.log("Form errors", formErrors);
@@ -103,9 +104,7 @@ export const TryForm = () => {
   const handleGetValues = () => {
     console.log("Get values", getValues());
   };
-
-
-
+// Use this to pass todays date as dob default value and show error after touching and it shows todays date, or maybe put an age bar of 5 years
   const handleSetValue = () => {
     setValue("studName", "Subru", {
       //not assignable, previously had "firstname" in it
@@ -114,6 +113,18 @@ export const TryForm = () => {
       shouldTouch: true,
     });
   };
+
+  const onSubmit = (data: FormValues) => {
+    console.log("Form submitted", data);
+    handleGetValues;
+    //might set input form values
+    //setValue(data);
+
+    // Show the PDF viewer
+    setShowPDF(true);
+    setPdfValues(data);
+  };
+
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -511,6 +522,8 @@ export const TryForm = () => {
                 register={register}
                 //{...register('regNumQualExam')}
               />
+
+
               <CInput
                 id="percentage"
                 name="percentage"
@@ -538,11 +551,25 @@ export const TryForm = () => {
               <PDFDoc formData={formData} />
             </PDFViewer>
           ) : null} */}
-        <Button type="submit" colorScheme="teal" variant="solid" m="3">
+        <Button type="submit" 
+          colorScheme="teal" variant="solid" m="3"
+        >
           Button
         </Button>
+        
       </form>
       <DevTool control={control} />
+      
+        {/* Conditional rendering based on formData */}
+          {pdfValues ? (
+            <PDFViewer style={{ width: '100%', height: '100vh' }}>
+              <PDFDoc inputValues={pdfValues} />
+            </PDFViewer>
+          ) : null}
+      
+      {/* Render the PDFPage if showPDF is true */}
+      {/*showPDF && <PDFDoc inputValues = { pdfValues} />}
+  */}
     </>
   );
 };
