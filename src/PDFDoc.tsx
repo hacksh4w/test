@@ -35,7 +35,6 @@ interface PDFPageProps {
 }
 // Create a PDF document
 const PDFDoc = ({ inputValues }: PDFPageProps) => {
-  // const {getValues} = form;
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -44,7 +43,6 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
         </View>
         <View style={styles.section}>
           <Text style={styles.heading}>User Input</Text>
-          {/*{ inputValues.map((field, index) => ( */}
           {Object.keys(inputValues).map((value, index) => {
             const values = Object.values(inputValues);
             return (
