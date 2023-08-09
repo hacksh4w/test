@@ -24,7 +24,8 @@ export const TryForm = () => {
     annualIncome: 0,
     address1: "",
     address2: "",
-    dob: null, // Set to the desired default date
+    dob : new Date(),
+    //dob: null, // Set to the desired default date
     phone: 0,
     gName : "",
     occupation : "",
@@ -57,7 +58,7 @@ export const TryForm = () => {
   const form = useForm<FormValues>({
     mode: "onTouched",
     resolver: yupResolver(schema),
-    defaultValues, //:defaultValues
+    defaultValues :defaultValues,
   });
   // mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
   // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
@@ -81,7 +82,7 @@ export const TryForm = () => {
     touchedFields,
     dirtyFields,
     isValid,
-  isSubmitted,  */
+    isSubmitted,  */
     isSubmitSuccessful,
   } = useFormState();
 
@@ -94,7 +95,7 @@ export const TryForm = () => {
 
   const onError = (formErrors: FieldErrors<FormValues>) => {
     console.log("Form errors", formErrors);
-  };
+  };  
 
   const onReset = () => {
     reset();
@@ -122,8 +123,9 @@ export const TryForm = () => {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(onSubmit, onError)}
+      <form 
+        onSubmit={handleSubmit(onSubmit // )}
+          , onError)}
         style={{
           width: "100vw",
           display: "flex",
@@ -323,16 +325,16 @@ export const TryForm = () => {
               {" "}
               <h3>Permanent Address</h3>
               <CInput
-                id="perm-address-line-1"
+                id="permAddressLine1"
                 label="My Address Line 1"
                 placeholder="Address Line 1"
-                name="perm-Address1"
+                name="permAddress1"
                 errors={errors.permAddress1}
                 register={register}
                 //{...register('address.line1')}
               />
               <CInput
-                id="perm-address-line2"
+                id="permAddressLine2"
                 label="My Address Line 2"
                 placeholder="Address Line 2"
                 name="permAddress2"
@@ -341,7 +343,7 @@ export const TryForm = () => {
                 //{...register('address.line2')}
               />
               <CInput
-                id="perm-address-line3"
+                id="permAddressLine3"
                 label="My Address Line 3"
                 placeholder="Address Line 3"
                 name="permAddress3"
@@ -441,7 +443,7 @@ export const TryForm = () => {
                 id="presState" //change this name
                 label="State"
                 placeholder="State"
-                name="preState"
+                name="presState"
                 register={register}
                 type="string"
                 errors={errors.presState}

@@ -45,7 +45,7 @@ interface InputProps extends ChakraInputProps {
   placeholder?: string;
   register: UseFormRegister<FormValues>;
   errors?: FieldError | undefined;
-  type?: "email" | "text" | "tel" | "date" | string;
+  type?: "email" | "text" | "tel" | "date" | 'select' |string;
   pattern?: string;
   //errors?: FieldError | Merge<FieldError, FieldErrorsImpl> | undefined;
 }
@@ -82,7 +82,7 @@ const CInput: React.FC<InputProps> = forwardRef(
           type={type}
           variant="filled"
           _hover={{
-            bgColor: "grey.900",
+            bgColor: "grey.300",
           }}
           // {...register(name)}
           {...(name && register(name, { required: rest.required }))}

@@ -42,29 +42,6 @@ const schema = yup.object().shape({
     .trim()
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `Taluk ${canOnlyContain}`),
-  /* address: yup  //find way to do it for each line of address
-    .string()
-    .trim()
-    .required(fieldRequired)
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/,
-      `Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character required`
-    ),
-  address1: yup
-  .string()
-    .trim()
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
-  address2: yup
-  .string()
-    .trim()
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
-  address3: yup
-  .string()
-    .trim()
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`), */
 
  //Relevent Details
   email: yup
@@ -82,13 +59,13 @@ const schema = yup.object().shape({
     //.matches(/^\+918[1-9][0-9]{8,11}$/, 'Must use +91 format')
   annualIncome :yup
     .number()
-    .typeError("Please enter a valid phone value") ,
- // .required(fieldRequired),
+    .typeError("Please enter a valid phone value") 
+    .required(fieldRequired),
 
  //blood grp select
   dob : yup
   .date()
-  //.required(fieldRequired)
+  .required(fieldRequired)
   .nullable()
   // .transform(v => (v instanceof Date && !isNaN(v) ? v : null)),
   //.date().transform((curr, orig) => orig === '' ? null : curr).required('Mandatory field message')
@@ -115,12 +92,11 @@ const schema = yup.object().shape({
     .max(50)
     .email('Email is not valid')
     .required(fieldRequired), 
-  gPhoneNume : yup
-    .string()
+  gPhoneNum : yup
+    .number()
     .max(30)
-    .trim()
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Father / Guardian's Phone Number ${canOnlyContain}`),
+    .required(fieldRequired),
+  //  .matches(/^[a-z ,.'-]+$/i, `Father / Guardian's Phone Number ${canOnlyContain}`),
 
   // Permanent Address Details
   permAddress1 : yup
@@ -142,11 +118,9 @@ const schema = yup.object().shape({
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `Address  ${canOnlyContain}`),
   pin : yup
-    .string()
+    .number()
     .max(30)
-    .trim()
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `PIN Code ${canOnlyContain}`),
+    .required(fieldRequired),
   district : yup
     .string()
     .max(30)
@@ -166,25 +140,24 @@ const schema = yup.object().shape({
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-, 0-9]+$/i, `Address ${canOnlyContain}`),
   presAddress2 : yup
     .string()
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-, 0-9]+$/i, `Address ${canOnlyContain}`),
   presAddress3 : yup
   .string()
     .max(30)
     .trim()
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Address ${canOnlyContain}`),
+    .matches(/^[a-z ,.', 0-9]+$/i, `Address ${canOnlyContain}`),
   presPin : yup
-    .string()
+    .number()
     .max(30)
-    .trim()
-    .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `PIN Code ${canOnlyContain}`),
+    .required(fieldRequired),
+   // .matches(/^[a-z ,.'-]+$/i, `PIN Code ${canOnlyContain}`),
   presDistrict : yup
     .string()
     .max(30)
@@ -236,3 +209,10 @@ const schema = yup.object().shape({
 
 export { schema };
 // defaultValues };
+
+
+/* Password RegEx validation
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/,),
+      `Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character required`
+*/
