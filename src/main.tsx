@@ -11,7 +11,6 @@ import { FormValues } from './types.ts';
 type inputValues = FormValues ;
 
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ChakraProvider>

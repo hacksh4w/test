@@ -116,7 +116,7 @@ export const TryForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted", data);
-    handleGetValues;
+    handleGetValues();
     //might set input form values
     //setValue(data);
 
@@ -561,11 +561,11 @@ export const TryForm = () => {
       <DevTool control={control} />
       
         {/* Conditional rendering based on formData */}
-          {pdfValues ? (
+          { pdfValues ? (
             <PDFViewer style={{ width: '100%', height: '100vh' }}>
               <PDFDoc inputValues={pdfValues} />
             </PDFViewer>
-          ) : null}
+          ) : null }
       
       {/* Render the PDFPage if showPDF is true */}
       {/*showPDF && <PDFDoc inputValues = { pdfValues} />}
