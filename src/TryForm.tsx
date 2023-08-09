@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { Box } from "@chakra-ui/layout";
 import { Flex } from "@chakra-ui/react";
+//import { Select } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useForm, FieldErrors, useFormState } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,6 +26,32 @@ export const TryForm = () => {
     address2: "",
     dob: null, // Set to the desired default date
     phone: 0,
+    gName : "",
+    occupation : "",
+    gEmail : "",
+    gPhoneNum : 0,
+    permAddress1 : "",
+    permAddress2 : "",
+    permAddress3 : "",
+    pin : 0,
+    district : "",
+    state : "",
+    presAddress1 : "",
+    presAddress2 : "",
+    presAddress3 : "", 
+    presPin : 0,
+    presDistrict : "",
+    presState : "",
+    qualifyingExam : "",
+    qualifyingBoard : "",
+    instituteName : "",
+    regNumQualExam : 0,  
+  //  percentage : 
+    passYear : 0,
+    rollNumKeam : 0,
+    appNumKeam : 0,
+   // allotted branch :   <Select />
+
   };
 
   const form = useForm<FormValues>({
@@ -78,7 +105,7 @@ export const TryForm = () => {
   };
 
   const handleSetValue = () => {
-    setValue("firstname", "John", {
+    setValue("studName", "Subru", {
       //not assignable, previously had "firstname" in it
       shouldValidate: true,
       shouldDirty: true,

@@ -84,6 +84,8 @@ const schema = yup.object().shape({
     .number()
     .typeError("Please enter a valid phone value") ,
  // .required(fieldRequired),
+
+ //blood grp select
   dob : yup
   .date()
   //.required(fieldRequired)
@@ -224,11 +226,9 @@ const schema = yup.object().shape({
 
   
   // KEAM Alottment Specific Details
-//  dob : yup
- // dob : yup
-  //dob : yup
-  // dob : yup
-
+  //  rollNumKeam : yup
+ // appNumKeam : yup
+  //allotted branch : yup  // select
 
 });
 
