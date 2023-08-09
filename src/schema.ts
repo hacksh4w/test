@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-const fieldRequired =  `This field is Required!`;   //instead of this, try label
+const fieldRequired =  `This field is Required!`;   
 const canOnlyContain = `can only contains alphabates`;
 
 const schema = yup.object().shape({
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     .trim()
     .max(20)
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Caste ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Caste ${canOnlyContain}`), 
   religion: yup
     .string()
     .max(30)

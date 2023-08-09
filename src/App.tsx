@@ -18,9 +18,9 @@ export default function App() {
       <FormProvider {...form}>
         <TryForm />
       </FormProvider>
-    {/*}  <PDFViewer>
+    {/*}  <PDFViewer  >
           <PDFDoc />
-  </PDFViewer>  */}
+    </PDFViewer>  */}
 
     </div>
   );

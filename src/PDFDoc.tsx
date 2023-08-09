@@ -38,7 +38,7 @@ const PDFDoc = ({ inputValues } : PDFPageProps ) => {
       <Document>
         <Page size="A4" style={styles.page}>
           <View>
-            <Text style={styles.heading}>  {/*  { getValues.studName } */} HI
+            <Text style={styles.heading}> { inputValues.studName }
             </Text>
           </View>
           <View style={styles.section}>

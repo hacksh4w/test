@@ -76,7 +76,6 @@ export const TryForm = () => {
     getValues,
     setValue,
     reset,
-    //trigger
   } = form;
 
   const {
