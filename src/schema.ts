@@ -11,6 +11,11 @@ const schema = yup.object().shape({
     .max(30)
     .required(fieldRequired)
     .matches(/^[a-z ,.'-]+$/i, `Name ${canOnlyContain}`),
+    gender: yup
+    .string()
+    .trim()
+    .max(5)
+    .required(fieldRequired),
     //Native Details
   caste: yup
     .string()

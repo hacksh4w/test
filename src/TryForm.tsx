@@ -12,8 +12,10 @@ import { PDFViewer } from '@react-pdf/renderer';
 import { DevTool } from "@hookform/devtools";
 import CInput from "./components/CI";
 import { FormValues } from "./types";
+import Options from "./components/Options";
 const defaultValues: FormValues = {
   studName: "",
+  gender: "",
   email: "",
   caste: "",
   religion: "",
@@ -131,7 +133,7 @@ export const TryForm = () => {
       //onReset();
     }
   }, [isSubmitSuccessful, reset]);
-
+  const genderOptions: string[] = ['M', 'F', 'Other']
   return (
     <>
       <form 
@@ -172,6 +174,15 @@ export const TryForm = () => {
                 errors={errors.studName}
                 register={register}
                 //{...register('studName')}
+              />
+              <Options
+                id="gender"
+                name="gender"
+                label="Gender"
+                placeholder="Gender"
+                items={genderOptions}
+                errors={errors.gender}
+                register={register}
               />
               <CInput
                 id="dob"
@@ -261,7 +272,7 @@ export const TryForm = () => {
               />
               <CInput
                 id="annualIncome"
-                label="Annual Income"
+                label="Annual Income of Parents"
                 placeholder="Annual Income"
                 type="number"
                 name="annualIncome"
