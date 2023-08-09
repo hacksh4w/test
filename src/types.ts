@@ -8,8 +8,6 @@ export interface FormValues {
     community: string;
     nativity: string;
     taluk: string;
-    address1: string;
-    address2: string;
     dob: Date | null ;
     annualIncome : number;
     phone: number;

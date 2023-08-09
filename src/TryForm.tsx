@@ -22,8 +22,6 @@ export const TryForm = () => {
     nativity: "",
     taluk: "",
     annualIncome: 0,
-    address1: "",
-    address2: "",
     dob : new Date(),
     //dob: null, // Set to the desired default date
     phone: 0,
@@ -91,6 +89,7 @@ export const TryForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted", data);
+    console.log("Get values", getValues());
   };
 
   const onError = (formErrors: FieldErrors<FormValues>) => {
@@ -104,6 +103,8 @@ export const TryForm = () => {
   const handleGetValues = () => {
     console.log("Get values", getValues());
   };
+
+
 
   const handleSetValue = () => {
     setValue("studName", "Subru", {
@@ -125,7 +126,7 @@ export const TryForm = () => {
     <>
       <form 
         onSubmit={handleSubmit(onSubmit // )}
-          , onError)}
+          , onError )}
         style={{
           width: "100vw",
           display: "flex",
