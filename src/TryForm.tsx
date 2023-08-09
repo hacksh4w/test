@@ -13,6 +13,7 @@ import { DevTool } from "@hookform/devtools";
 import CInput from "./components/CI";
 import { FormValues } from "./types";
 import Options from "./components/Options";
+import { useBreakpointValue } from '@chakra-ui/react'
 const defaultValues: FormValues = {
   studName: "",
   gender: "",
@@ -374,7 +375,7 @@ export const TryForm = () => {
           <Flex direction={["column", "row"]} w="100%">
             <Box
               p="4"
-              w="50%"
+              width={useBreakpointValue({base: '100%', sm: '50%'})}
               rounded="10"
               m="3"
               bg="cyan.200"
@@ -442,7 +443,7 @@ export const TryForm = () => {
             </Box>
             <Box
               p="4"
-              w="50%"
+              w={useBreakpointValue({base: '100%', sm: '50%'})}
               rounded="10"
               bg="cyan.200"
               m="3"
