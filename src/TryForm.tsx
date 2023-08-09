@@ -7,8 +7,8 @@ import { useEffect } from "react";
 import { useForm, FieldErrors, useFormState } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
-import PDFDoc from './PDFDoc'
-import { PDFViewer } from '@react-pdf/renderer';
+import PDFDoc from "./PDFDoc";
+import { PDFViewer } from "@react-pdf/renderer";
 import { DevTool } from "@hookform/devtools";
 import CInput from "./components/CI";
 import { FormValues } from "./types";
@@ -23,43 +23,41 @@ const defaultValues: FormValues = {
   nativity: "",
   taluk: "",
   annualIncome: 0,
-  dob : new Date(),
+  dob: new Date(),
   //dob: null, // Set to the desired default date
   phone: 0,
-  gName : "",
-  occupation : "",
-  gEmail : "",
-  gPhoneNum : 0,
-  permAddress1 : "",
-  permAddress2 : "",
-  permAddress3 : "",
-  pin : 0,
-  district : "",
-  state : "",
-  presAddress1 : "",
-  presAddress2 : "",
-  presAddress3 : "", 
-  presPin : 0,
-  presDistrict : "",
-  presState : "",
-  qualifyingExam : "",
-  qualifyingBoard : "",
-  instituteName : "",
-  regNumQualExam : 0,  
-//  percentage : 
-  passYear : 0,
-  rollNumKeam : 0,
-  appNumKeam : 0,
- // allotted branch :   <Select />
-
+  gName: "",
+  occupation: "",
+  gEmail: "",
+  gPhoneNum: 0,
+  permAddress1: "",
+  permAddress2: "",
+  permAddress3: "",
+  pin: 0,
+  district: "",
+  state: "",
+  presAddress1: "",
+  presAddress2: "",
+  presAddress3: "",
+  presPin: 0,
+  presDistrict: "",
+  presState: "",
+  qualifyingExam: "",
+  qualifyingBoard: "",
+  instituteName: "",
+  regNumQualExam: 0,
+  //  percentage :
+  passYear: 0,
+  rollNumKeam: 0,
+  appNumKeam: 0,
+  // allotted branch :   <Select />
 };
-
 
 export const TryForm = () => {
   const form = useForm<FormValues>({
     mode: "onTouched",
     resolver: yupResolver(schema),
-    defaultValues :defaultValues,
+    defaultValues: defaultValues,
   });
 
   const [showPDF, setShowPDF] = useState(false);
@@ -92,10 +90,9 @@ export const TryForm = () => {
   // console.log({ formErrors, isDirty, touchedFields, dirtyFields, isValid });
   // console.log({ isSubmitted, isSubmitSuccessful });
 
-
   const onError = (formErrors: FieldErrors<FormValues>) => {
     console.log("Form errors", formErrors);
-  };  
+  };
 
   const onReset = () => {
     reset();
@@ -104,7 +101,7 @@ export const TryForm = () => {
   const handleGetValues = () => {
     console.log("Get values", getValues());
   };
-// Use this to pass todays date as dob default value and show error after touching and it shows todays date, or maybe put an age bar of 5 years
+  // Use this to pass todays date as dob default value and show error after touching and it shows todays date, or maybe put an age bar of 5 years
   const handleSetValue = () => {
     setValue("studName", "Subru", {
       //not assignable, previously had "firstname" in it
@@ -116,7 +113,7 @@ export const TryForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted", data);
-    handleGetValues()
+    handleGetValues();
     console.log(pdfValues);
     //might set input form values
     //setValue(data);
@@ -126,19 +123,47 @@ export const TryForm = () => {
     setPdfValues(data);
   };
 
-
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
       //onReset();
     }
   }, [isSubmitSuccessful, reset]);
-  const genderOptions: string[] = ['M', 'F', 'Other']
+  const genderOptions: string[] = ["M", "F", "Other"];
+  const BloodgOptions: string[] = [
+    "A+",
+    "B+",
+    "AB+",
+    "O+",
+    "A-",
+    "B-",
+    "AB-",
+    "O-",
+    "Other",
+  ];
+  const allotmentOptions: string[] = [
+    "Computer Science and Engineering (CSE) (Merit Regulated)",
+    "Computer Science and Engineering (CSE) (Merit Full Fees)",
+    "Electronics and Communication Engineering (ECE) (Merit Regulated)",
+    "Electronics and Communication Engineering (ECE) (Merit Full Fees)",
+    "Electrical and Electronics Engineering (EEE) (Merit Regulated)",
+    "Electrical and Electronics Engineering (EEE) (Merit Full Fees)",
+    "Electronics and Biomedical Engineering (EBE) (Merit Regulated)",
+    "Electronics and Biomedical Engineering (EBE) (Merit Full Fees)",
+    "Mechanical Engineering (ME) (Merit Regulated)",
+    "Mechanical Engineering (ME) (Merit Full Fees)",
+    "Computer Science and Business Systems (CU) (Merit Regulated)",
+    "Computer Science and Business Systems (CU) (Merit Full Fees)",
+    "Electronics(VLSI design and technology) (EVLSI) (Merit Regulated)",
+    "Electronics(VLSI design and technology) (EVLSI) (Merit Full Fees)",
+  ];
   return (
     <>
-      <form 
-        onSubmit={handleSubmit(onSubmit // )}
-          , onError )}
+      <form
+        onSubmit={handleSubmit(
+          onSubmit, // )}
+          onError
+        )}
         style={{
           width: "100vw",
           display: "flex",
@@ -176,13 +201,14 @@ export const TryForm = () => {
                 //{...register('studName')}
               />
               <Options
-                id="gender"
-                name="gender"
-                label="Gender"
-                placeholder="Gender"
-                items={genderOptions}
-                errors={errors.gender}
+                id="bloodg"
+                label="Blood Group"
+                items={BloodgOptions}
+                placeholder="Blood Group"
+                name="bloodg"
                 register={register}
+                errors={errors.caste}
+                //{...register('caste')}
               />
               <CInput
                 id="dob"
@@ -191,7 +217,7 @@ export const TryForm = () => {
                 register={register}
                 name="dob"
                 errors={errors.dob}
-                type='date'
+                type="date"
                 //{...register('dob')}
               />
               <CInput
@@ -232,6 +258,15 @@ export const TryForm = () => {
               m="3"
               //boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
             >
+              <Options
+                id="gender"
+                name="gender"
+                label="Gender"
+                placeholder="Gender"
+                items={genderOptions}
+                errors={errors.gender}
+                register={register}
+              />
               <CInput
                 id="nativity"
                 name="nativity"
@@ -241,6 +276,7 @@ export const TryForm = () => {
                 register={register}
                 //{...register('nativity')}
               />
+
               <CInput
                 id="Taluk"
                 name="taluk"
@@ -532,8 +568,6 @@ export const TryForm = () => {
                 register={register}
                 //{...register('regNumQualExam')}
               />
-
-
               <CInput
                 id="percentage"
                 name="percentage"
@@ -554,6 +588,44 @@ export const TryForm = () => {
               />
             </Box>
           </Flex>
+          <Flex direction={["column", "row"]} w="100%">
+            <Box p="4" m="3" w="100%" rounded="10" bg="cyan.200">
+              <h2>KEAM Allotment Details</h2>
+              <CInput
+                id="appno"
+                name="appno"
+                label="Application Number"
+                placeholder="Application Number"
+                errors={errors.appno}
+                register={register}
+              />
+              <CInput
+                id="rollno"
+                name="rollno"
+                label="RollNo: Number"
+                placeholder="RollNo: Number"
+                errors={errors.rollno}
+                register={register}
+              />
+              <CInput
+                id="rank"
+                name="rank"
+                label="Rank"
+                placeholder="Rank"
+                errors={errors.rank}
+                register={register}
+              />
+              <Options
+                id="allotment"
+                name="allotment"
+                label="Alloted Branch"
+                placeholder="Allotted Branch"
+                errors={errors.allotment}
+                register={register}
+                items={allotmentOptions}
+              />
+            </Box>
+          </Flex>
         </div>
         {/* Conditional rendering based on formData 
         {formData ? (
@@ -561,25 +633,22 @@ export const TryForm = () => {
               <PDFDoc formData={formData} />
             </PDFViewer>
           ) : null} */}
-        <Button type="submit" 
-          colorScheme="teal" variant="solid" m="3"
-        >
+        <Button type="submit" colorScheme="teal" variant="solid" m="3">
           Button
         </Button>
-        
       </form>
       <DevTool control={control} />
-      
-        {/* Conditional rendering based on formData */}
-          {pdfValues ? (
-            <PDFViewer style={{ width: '100%', height: '100vh' }}>
-              <PDFDoc inputValues={pdfValues} />
-            </PDFViewer>
-          ) : null}
-      
+
+      {/* Conditional rendering based on formData */}
+      {pdfValues ? (
+        <PDFViewer style={{ width: "100%", height: "100vh" }}>
+          <PDFDoc inputValues={pdfValues} />
+        </PDFViewer>
+      ) : null}
+
       {/* Render the PDFPage if showPDF is true */}
       {/*showPDF && <PDFDoc inputValues = { pdfValues} />}
-  */}
+       */}
     </>
   );
 };

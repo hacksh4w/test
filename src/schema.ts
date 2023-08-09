@@ -204,10 +204,25 @@ const schema = yup.object().shape({
 
   
   // KEAM Alottment Specific Details
-  //  rollNumKeam : yup
- // appNumKeam : yup
-  //allotted branch : yup  // select
-
+  appno: yup
+  .string()
+  .max(15)
+  .trim()
+  .required(fieldRequired),
+  rollno:yup
+  .string()
+  .max(15)
+  .trim()
+  .required(fieldRequired),
+  allotment: yup
+  .string()
+  .max(50)
+  .trim()
+  .required(fieldRequired),
+  rank: yup
+  .number()
+  .max(10)
+  .required(fieldRequired),
 });
 
 //const defaultValues = schema.cast({}); // Use schema.cast to provide default values

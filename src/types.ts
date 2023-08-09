@@ -2,6 +2,11 @@
 export interface FormValues {
     studName: string;
     email: string;
+    bloodg: string;
+    appno: string;
+    allotment: string;
+    rank: number;
+    rollno: string;
     gender: string;
     // bloodGrp :   <Select /> 
     caste: string;
