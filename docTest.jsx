@@ -12,7 +12,7 @@ const Quixote = () => (
   <Document>
     <Page style={styles.body}>
       <Text style={styles.header} fixed>
-        ~ Created with react-pdf ~
+        Govt. Model Engineering College, Thrikkakara
       </Text>
       <View style={styles.container}>
       	<Image
