@@ -1,7 +1,6 @@
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Document, Page, Image, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { FormValues } from "./types";
-import { MECLogo } from './assets/MECLogo.png'
-
+//import { MECLogo } from './assets/MECLogo.png'
 // import {form} from './TryForm';'
 
 //Define styles for PDF
@@ -73,6 +72,17 @@ const styles = StyleSheet.create({
   fontSize : 10,
   textAlign : 'right',
 }, */
+  picBox :{
+    backgroundColor: '#f0f0f0',
+    width: 150,
+    height: 150,
+    borderWidth: 1,
+    borderColor: 'grey',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // align : 'right',
+
+  },
   pageNumber: {
     position: 'absolute',
     fontSize: 12,
@@ -90,18 +100,29 @@ const styles = StyleSheet.create({
         label: string;
         value: string;
       } */
-}
+    }
+
+const someKeys = ['studName', 'email', 'caste', 'nativity', 'religion'];
+
 
 interface PDFPageProps {
   inputValues: FormValues;
 }
+
+
+
+
 // Create a PDF document
 const PDFDoc = ({ inputValues }: PDFPageProps) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <View>
-          <img src = '#MECLogo' />
+        <View style={styles.container}>
+          <Image //src = '#MECLogo' 
+          src="./assets/MECLogo.png" />
+        <View style={styles.picBox}>
+          <Text> Please paste your pic here</Text>
+        </View>
         </View>
         <View>
           <Text style={styles.heading}>  {inputValues.studName}</Text>
