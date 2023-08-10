@@ -121,6 +121,8 @@ export const TryForm = () => {
 
     // Show the PDF viewer
     setShowPDF(true);
+    setShowPDF(false);
+    setShowPDF(true);
     setPdfValues(data);
   };
 

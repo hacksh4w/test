@@ -43,7 +43,7 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
         </View>
         <View style={styles.section}>
           <Text style={styles.heading}>User Input</Text>
-          {Object.keys(inputValues).map((value, index) => {
+          {/* {Object.keys(inputValues).map((value, index) => {
             const values = Object.values(inputValues);
             return (
               <View key={index}>
@@ -51,6 +51,19 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
                 <Text style={styles.value}>{`${values[index]}`}</Text>
               </View>
             );
+          })} */}
+          {Object.keys(inputValues).map((value, index) => {
+            const section1 = ["email", "bloodg", "appno", "allotment"];
+            const values = Object.values(inputValues);
+            const keys = Object.keys(inputValues);
+            if (section1.includes(keys[index])) {
+              return (
+                <View key={index}>
+                  <Text style={styles.label}>{value}:</Text>
+                  <Text style={styles.value}>{`${values[index]}`}</Text>
+                </View>
+              );
+            }
           })}
         </View>
       </Page>
