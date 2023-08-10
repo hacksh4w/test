@@ -101,17 +101,11 @@ const styles = StyleSheet.create({
         value: string;
       } */
     }
-
-const someKeys = ['studName', 'email', 'caste', 'nativity', 'religion'];
-
-
 interface PDFPageProps {
   inputValues: FormValues;
 }
 
-
-
-
+const someKeys = ['studName', 'email', 'caste', 'nativity', 'religion']
 // Create a PDF document
 const PDFDoc = ({ inputValues }: PDFPageProps) => {
   return (
@@ -128,12 +122,13 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
           <Text style={styles.heading}>  {inputValues.studName}</Text>
         </View>
         <View style={styles.section}>
-          <Text style={styles.heading}>User Input</Text>
-          {Object.keys(inputValues).map((value, index) => {
+          <Text style={styles.heading}>DataSheet</Text>
+         {someKeys.map((key,index) => {
+         {/* {Object.keys(inputValues).map((value, index) => { */}
             const values = Object.values(inputValues);
             return (
               <View key={index}>
-                <Text style={styles.label}>{value}:</Text>
+                <Text style={styles.label}>{key}:</Text>
                 <Text style={styles.value}>{`${values[index]}`}</Text>
               </View>
             );
