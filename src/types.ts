@@ -8,7 +8,7 @@ export interface FormValues {
     rank: number;
     rollno: string;
     gender: string;
-    // bloodGrp :   <Select /> 
+  //  bloodg : string; //Select 
     caste: string;
     religion: string;
     community: string;

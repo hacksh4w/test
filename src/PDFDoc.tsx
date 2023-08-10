@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
     padding: 20,
+    margin : 5,
   }, 
   container: {
     flexDirection: 'row', // Display items side by side
@@ -17,6 +18,8 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 20,
+    flexDirection: 'column', // Display items side by side
+    alignItems: 'center',
   },
   heading: {
     fontSize: 18,
@@ -29,12 +32,6 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 14,
   }, 
-  /*
-  body: {
-    paddingTop: 35,
-    paddingBottom: 65,
-    paddingHorizontal: 35,
-  }, */
   title: {
     fontSize: 24,
     textAlign: 'center',
@@ -98,7 +95,15 @@ mecLogo : {
     textAlign: 'center',
     color: 'grey',
   }, 
- 
+  field : {
+    marginRight : 20, // Display items side by side
+    flexDirection: 'row',
+    alignItems: 'center', // Align items vertically within the container
+    marginBottom: 10,
+    fontSize : 15,
+    columnCount: 2,
+    columnGap: 40, 
+  },
 });
 
 {
@@ -111,7 +116,8 @@ interface PDFPageProps {
   inputValues: FormValues;
 }
 
-const someKeys = ['studName', 'email', 'caste', 'nativity', 'religion']
+const persKeys = ['studName', 'bloog','dob', 'caste', 'religion']
+const otherKeys = ['gender', 'nativity', 'taluk', 'email', 'phoneNum']
 // Create a PDF document
 const PDFDoc = ({ inputValues }: PDFPageProps) => {
   return (
@@ -123,24 +129,41 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
           src= { MECLogoImage } 
           style= {styles.mecLogo }
             />
-        <View style={styles.picBox}>
-          <Text> Please paste your passport size pic here</Text>
-        </View>
+            <View style={styles.picBox}>
+              <Text> Please paste your passport size pic here</Text>
+            </View>
         </View>
         <View>
           <Text style={styles.heading}>  {inputValues.studName}</Text>
         </View>
-        <View style={styles.section}>
-         {someKeys.map((key,index) => {
-         {/* {Object.keys(inputValues).map((value, index) => { */}
-            const values = Object.values(inputValues);
-            return (
-              <View key={index}>
-                <Text style={styles.label}>{key}:</Text>
-                <Text style={styles.value}>{`${values[index]}`}</Text>
-              </View>
-            );
-          })}
+        <View style={styles.container}>
+          <View style={styles.section}>
+         
+          {persKeys.map((key,index) => {
+          {/* {Object.keys(inputValues).map((value, index) => { */}
+              const values = Object.values(inputValues);
+              return (
+                <View key={index} style={styles.field}>
+                  <Text style={styles.label}>{key}:</Text>
+                  <Text style={styles.value}>{`${values[index]}`}</Text>
+                </View>
+              );
+            })}
+          </View>
+
+          {/* Other Details */}
+          <View style={styles.section}>
+            {otherKeys.map((key,index) => {
+            {/* {Object.keys(inputValues).map((value, index) => { */}
+                const values = Object.values(inputValues);
+                return (
+                  <View key={index}>
+                    <Text style={styles.label}>{key}:</Text>
+                    <Text style={styles.value}>{`${values[index]}`}</Text>
+                  </View>
+                );
+              })}
+          </View>
         </View>
       </Page>
     </Document>

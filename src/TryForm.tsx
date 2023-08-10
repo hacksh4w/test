@@ -32,6 +32,7 @@ const defaultValues: FormValues = {
   occupation: "",
   gEmail: "",
   gPhoneNum: 0,
+  //bloodg : "",
   permAddress1: "",
   permAddress2: "",
   permAddress3: "",
