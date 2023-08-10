@@ -14,6 +14,7 @@ import CInput from "./components/CI";
 import { FormValues } from "./types";
 import Options from "./components/Options";
 import { useBreakpointValue } from '@chakra-ui/react'
+
 const defaultValues: FormValues = {
   studName: "",
   gender: "",
@@ -31,6 +32,7 @@ const defaultValues: FormValues = {
   occupation: "",
   gEmail: "",
   gPhoneNum: 0,
+  //bloodg : "",
   permAddress1: "",
   permAddress2: "",
   permAddress3: "",
@@ -51,6 +53,7 @@ const defaultValues: FormValues = {
   passYear: 0,
   rollNumKeam: 0,
   appNumKeam: 0,
+  rank : 0,
   // allotted branch :   <Select />
 };
 
@@ -74,7 +77,6 @@ export const TryForm = () => {
     getValues,
     setValue,
     reset,
-    //trigger
   } = form;
 
   const {
@@ -94,10 +96,6 @@ export const TryForm = () => {
     console.log("Form errors", formErrors);
   };
 
-  const onReset = () => {
-    reset();
-  };
-
   const handleGetValues = () => {
     console.log("Get values", getValues());
   };
@@ -115,6 +113,9 @@ export const TryForm = () => {
     console.log("Form submitted", data);
     handleGetValues();
     console.log(pdfValues);
+    //might set input form values
+    //setValue(data);
+    
     // Show the PDF viewer
     setPdfValues(data);
   };
@@ -629,7 +630,9 @@ export const TryForm = () => {
               <PDFDoc formData={formData} />
             </PDFViewer>
           ) : null} */}
-        <Button type="submit" colorScheme="teal" variant="solid" m="3">
+        <Button type="submit" colorScheme="teal" variant="solid" m="3"
+          //onClick={handleResetForm}
+        >
           Button
         </Button>
       </form>

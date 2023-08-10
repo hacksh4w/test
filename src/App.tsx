@@ -4,8 +4,8 @@ import { useForm, FormProvider } from "react-hook-form";
 import { FormValues } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
-import { PDFViewer } from '@react-pdf/renderer';
-import PDFDoc from "./PDFDoc";
+//import { PDFViewer } from '@react-pdf/renderer';
+//import PDFDoc from "./PDFDoc";
 
 export default function App() {
   const form = useForm<FormValues>({
@@ -18,9 +18,9 @@ export default function App() {
       <FormProvider {...form}>
         <TryForm />
       </FormProvider>
-    {/*}  <PDFViewer>
+    {/*}  <PDFViewer  >
           <PDFDoc />
-  </PDFViewer>  */}
+    </PDFViewer>  */}
 
     </div>
   );
