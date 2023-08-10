@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-const fieldRequired =  `This field is Required!`;   //instead of this, try label
+const fieldRequired =  `This field is Required!`;   
 const canOnlyContain = `can only contains alphabates`;
 
 const schema = yup.object().shape({
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
     .trim()
     .max(20)
     .required(fieldRequired)
-    .matches(/^[a-z ,.'-]+$/i, `Caste ${canOnlyContain}`),
+    .matches(/^[a-z ,.'-]+$/i, `Caste ${canOnlyContain}`), 
   religion: yup
     .string()
     .max(30)
@@ -204,14 +204,14 @@ const schema = yup.object().shape({
 
   
   // KEAM Alottment Specific Details
-  appno: yup
+  appNumKeam: yup
   .string()
   .max(15)
   .trim()
   .required(fieldRequired),
-  rollno:yup
+  rollNumKeam:yup
   .string()
-  .max(15)
+  .max(10)
   .trim()
   .required(fieldRequired),
   allotment: yup
@@ -219,6 +219,7 @@ const schema = yup.object().shape({
   .max(100)
   .trim()
   .required(fieldRequired),
+
   rank: yup
   .number()
   .required(fieldRequired),

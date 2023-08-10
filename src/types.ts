@@ -8,7 +8,7 @@ export interface FormValues {
     rank: number;
     rollno: string;
     gender: string;
-    // bloodGrp :   <Select /> 
+  //  bloodg : string; //Select 
     caste: string;
     religion: string;
     community: string;
@@ -37,7 +37,7 @@ export interface FormValues {
     qualifyingBoard : string;
     instituteName : string;
     regNumQualExam : number ;  
-  //  percentage : 
+    percentage : number; 
     passYear : number;
     rollNumKeam : number;
     appNumKeam : number;

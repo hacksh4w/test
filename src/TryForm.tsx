@@ -14,6 +14,7 @@ import CInput from "./components/CI";
 import { FormValues } from "./types";
 import Options from "./components/Options";
 import { useBreakpointValue } from '@chakra-ui/react'
+
 const defaultValues: FormValues = {
   studName: "",
   gender: "",
@@ -31,6 +32,7 @@ const defaultValues: FormValues = {
   occupation: "",
   gEmail: "",
   gPhoneNum: 0,
+  //bloodg : "",
   permAddress1: "",
   permAddress2: "",
   permAddress3: "",
@@ -51,6 +53,7 @@ const defaultValues: FormValues = {
   passYear: 0,
   rollNumKeam: 0,
   appNumKeam: 0,
+  rank : 0,
   // allotted branch :   <Select />
 };
 
@@ -61,7 +64,6 @@ export const TryForm = () => {
     defaultValues: defaultValues,
   });
 
-  const [showPDF, setShowPDF] = useState(false);
   const [pdfValues, setPdfValues] = useState<FormValues>();
   // mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
   // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
@@ -75,7 +77,6 @@ export const TryForm = () => {
     getValues,
     setValue,
     reset,
-    //trigger
   } = form;
 
   const {
@@ -93,10 +94,6 @@ export const TryForm = () => {
 
   const onError = (formErrors: FieldErrors<FormValues>) => {
     console.log("Form errors", formErrors);
-  };
-
-  const onReset = () => {
-    reset();
   };
 
   const handleGetValues = () => {
@@ -118,12 +115,12 @@ export const TryForm = () => {
     console.log(pdfValues);
     //might set input form values
     //setValue(data);
-
+    
     // Show the PDF viewer
     setShowPDF(true);
     setShowPDF(false);
     setShowPDF(true);
-    setPdfValues(data);
+    
   };
 
   useEffect(() => {
@@ -636,7 +633,9 @@ export const TryForm = () => {
               <PDFDoc formData={formData} />
             </PDFViewer>
           ) : null} */}
-        <Button type="submit" colorScheme="teal" variant="solid" m="3">
+        <Button type="submit" colorScheme="teal" variant="solid" m="3"
+          //onClick={handleResetForm}
+        >
           Button
         </Button>
       </form>
