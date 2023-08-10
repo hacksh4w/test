@@ -37,7 +37,7 @@ export interface FormValues {
     qualifyingBoard : string;
     instituteName : string;
     regNumQualExam : number ;  
-  //  percentage : 
+    percentage : number; 
     passYear : number;
     rollNumKeam : number;
     appNumKeam : number;

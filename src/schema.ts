@@ -204,14 +204,14 @@ const schema = yup.object().shape({
 
   
   // KEAM Alottment Specific Details
-  appno: yup
+  appNumKeam: yup
   .string()
   .max(15)
   .trim()
   .required(fieldRequired),
-  rollno:yup
+  rollNumKeam:yup
   .string()
-  .max(15)
+  .max(10)
   .trim()
   .required(fieldRequired),
   allotment: yup

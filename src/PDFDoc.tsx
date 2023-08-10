@@ -1,11 +1,19 @@
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { FormValues } from "./types";
-// import {form} from './TryForm';
+import { MECLogo } from './assets/MECLogo.png'
+
+// import {form} from './TryForm';'
+
 //Define styles for PDF
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
     padding: 20,
+  }, 
+  container: {
+    flexDirection: 'row', // Display items side by side
+    alignItems: 'center', // Align items vertically within the container
+    marginBottom: 10,
   },
   section: {
     marginBottom: 20,
@@ -20,7 +28,61 @@ const styles = StyleSheet.create({
   },
   value: {
     fontSize: 14,
+  }, 
+  /*
+  body: {
+    paddingTop: 35,
+    paddingBottom: 65,
+    paddingHorizontal: 35,
+  }, */
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    fontFamily: 'Oswald'
   },
+  author: {
+    fontSize: 2,
+    textAlign: 'center',
+    marginBottom: 40,
+  },
+  subtitle: {
+    fontSize: 18,
+    margin: 12,
+    fontFamily: 'Oswald'
+  },
+  text: {
+    margin: 12,
+    fontSize: 14,
+    textAlign: 'justify',
+    fontFamily: 'Times-Roman'
+  },
+  image: {
+    width : 120,
+    height : 90,
+    marginVertical: 12,
+    marginHorizontal: 100,
+  },
+  header: {
+    fontSize: 12,
+    marginBottom: 20,
+    textAlign: 'center',
+    color: 'grey',
+  },
+/*  mecName: {
+  margin : 3,
+  fontSize : 10,
+  textAlign : 'right',
+}, */
+  pageNumber: {
+    position: 'absolute',
+    fontSize: 12,
+    bottom: 30,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    color: 'grey',
+  }, 
+
 });
 
 {
@@ -39,7 +101,10 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View>
-          <Text style={styles.heading}> HI {inputValues.studName}</Text>
+          <img src = '#MECLogo' />
+        </View>
+        <View>
+          <Text style={styles.heading}>  {inputValues.studName}</Text>
         </View>
         <View style={styles.section}>
           <Text style={styles.heading}>User Input</Text>

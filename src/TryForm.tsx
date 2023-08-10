@@ -14,6 +14,7 @@ import CInput from "./components/CI";
 import { FormValues } from "./types";
 import Options from "./components/Options";
 import { useBreakpointValue } from '@chakra-ui/react'
+
 const defaultValues: FormValues = {
   studName: "",
   gender: "",
@@ -51,6 +52,7 @@ const defaultValues: FormValues = {
   passYear: 0,
   rollNumKeam: 0,
   appNumKeam: 0,
+  rank : 0,
   // allotted branch :   <Select />
 };
 
@@ -92,10 +94,6 @@ export const TryForm = () => {
 
   const onError = (formErrors: FieldErrors<FormValues>) => {
     console.log("Form errors", formErrors);
-  };
-
-  const onReset = () => {
-    reset();
   };
 
   const handleGetValues = () => {
