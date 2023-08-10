@@ -1,6 +1,7 @@
 import { Document, Page, Image, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { FormValues } from "./types";
 //import { MECLogo } from './assets/MECLogo.png'
+import MECLogoImage from './assets/MECLogo.png'; 
 // import {form} from './TryForm';'
 
 //Define styles for PDF
@@ -72,14 +73,19 @@ const styles = StyleSheet.create({
   fontSize : 10,
   textAlign : 'right',
 }, */
+mecLogo : {
+  width : 150,
+  height : 90,
+},
   picBox :{
     backgroundColor: '#f0f0f0',
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
     borderWidth: 1,
     borderColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
+    padding : 2,
     // align : 'right',
 
   },
@@ -92,7 +98,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'grey',
   }, 
-
+ 
 });
 
 {
@@ -112,17 +118,19 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.container}>
+          <Text style={styles.heading}>DataSheet</Text>
           <Image //src = '#MECLogo' 
-          src="./assets/MECLogo.png" />
+          src= { MECLogoImage } 
+          style= {styles.mecLogo }
+            />
         <View style={styles.picBox}>
-          <Text> Please paste your pic here</Text>
+          <Text> Please paste your passport size pic here</Text>
         </View>
         </View>
         <View>
           <Text style={styles.heading}>  {inputValues.studName}</Text>
         </View>
         <View style={styles.section}>
-          <Text style={styles.heading}>DataSheet</Text>
          {someKeys.map((key,index) => {
          {/* {Object.keys(inputValues).map((value, index) => { */}
             const values = Object.values(inputValues);

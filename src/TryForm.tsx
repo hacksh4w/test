@@ -63,7 +63,6 @@ export const TryForm = () => {
     defaultValues: defaultValues,
   });
 
-  const [showPDF, setShowPDF] = useState(false);
   const [pdfValues, setPdfValues] = useState<FormValues>();
   // mode: 'onTouched',  // By default, the validation is triggered on every change of the input value (mode: 'onChange')
   // The validation of the form inputs will only be triggered when the input is blurred or explicitly marked as touched.
@@ -116,9 +115,9 @@ export const TryForm = () => {
     //might set input form values
     //setValue(data);
 
-    // Show the PDF viewer
-    setShowPDF(true);
+    // set values to be passed to the pdf 
     setPdfValues(data);
+    
   };
 
   useEffect(() => {
@@ -631,7 +630,9 @@ export const TryForm = () => {
               <PDFDoc formData={formData} />
             </PDFViewer>
           ) : null} */}
-        <Button type="submit" colorScheme="teal" variant="solid" m="3">
+        <Button type="submit" colorScheme="teal" variant="solid" m="3"
+          //onClick={handleResetForm}
+        >
           Button
         </Button>
       </form>
