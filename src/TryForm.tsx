@@ -117,10 +117,7 @@ export const TryForm = () => {
     //setValue(data);
     
     // Show the PDF viewer
-    setShowPDF(true);
-    setShowPDF(false);
-    setShowPDF(true);
-    
+    setPdfValues(data);
   };
 
   useEffect(() => {

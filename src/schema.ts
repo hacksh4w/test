@@ -57,7 +57,8 @@ const schema = yup.object().shape({
     .required(fieldRequired), 
   phone: yup
     .number()
-    .typeError("Please enter a valid phone number") ,
+    .typeError("Please enter a valid phone number") 
+    .max(10000000000),
     // .required(fieldRequired),
     // Phone Regex : /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
     //.string().phone().required();
@@ -99,7 +100,7 @@ const schema = yup.object().shape({
     .required(fieldRequired), 
   gPhoneNum : yup
     .number()
-    .max(30)
+    .max(10000000000)
     .required(fieldRequired),
   //  .matches(/^[a-z ,.'-]+$/i, `Father / Guardian's Phone Number ${canOnlyContain}`),
 
@@ -124,7 +125,7 @@ const schema = yup.object().shape({
     .matches(/^[a-z ,.'-]+$/i, `Address  ${canOnlyContain}`),
   pin : yup
     .number()
-    .max(30)
+    .max(1000000)
     .required(fieldRequired),
   district : yup
     .string()
@@ -160,7 +161,7 @@ const schema = yup.object().shape({
     .matches(/^[a-z ,.', 0-9]+$/i, `Address ${canOnlyContain}`),
   presPin : yup
     .number()
-    .max(30)
+    .max(1000000)
     .required(fieldRequired),
    // .matches(/^[a-z ,.'-]+$/i, `PIN Code ${canOnlyContain}`),
   presDistrict : yup
