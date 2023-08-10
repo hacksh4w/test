@@ -216,12 +216,12 @@ const schema = yup.object().shape({
   .required(fieldRequired),
   allotment: yup
   .string()
-  //.max(50)
-  .trim(),
-  //.required(fieldRequired),
+  .max(100)
+  .trim()
+  .required(fieldRequired),
+
   rank: yup
   .number()
-  .max(10)
   .required(fieldRequired),
 });
 

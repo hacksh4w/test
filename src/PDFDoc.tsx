@@ -136,34 +136,30 @@ const PDFDoc = ({ inputValues }: PDFPageProps) => {
         <View>
           <Text style={styles.heading}>  {inputValues.studName}</Text>
         </View>
-        <View style={styles.container}>
-          <View style={styles.section}>
-         
-          {persKeys.map((key,index) => {
-          {/* {Object.keys(inputValues).map((value, index) => { */}
-              const values = Object.values(inputValues);
+        <View style={styles.section}>
+          <Text style={styles.heading}>User Input</Text>
+          {/* {Object.keys(inputValues).map((value, index) => {
+            const values = Object.values(inputValues);
+            return (
+              <View key={index}>
+                <Text style={styles.label}>{value}:</Text>
+                <Text style={styles.value}>{`${values[index]}`}</Text>
+              </View>
+            );
+          })} */}
+          {Object.keys(inputValues).map((value, index) => {
+            const section1 = ["email", "bloodg", "appno", "allotment"];
+            const values = Object.values(inputValues);
+            const keys = Object.keys(inputValues);
+            if (section1.includes(keys[index])) {
               return (
-                <View key={index} style={styles.field}>
-                  <Text style={styles.label}>{key}:</Text>
+                <View key={index}>
+                  <Text style={styles.label}>{value}:</Text>
                   <Text style={styles.value}>{`${values[index]}`}</Text>
                 </View>
               );
-            })}
-          </View>
-
-          {/* Other Details */}
-          <View style={styles.section}>
-            {otherKeys.map((key,index) => {
-            {/* {Object.keys(inputValues).map((value, index) => { */}
-                const values = Object.values(inputValues);
-                return (
-                  <View key={index}>
-                    <Text style={styles.label}>{key}:</Text>
-                    <Text style={styles.value}>{`${values[index]}`}</Text>
-                  </View>
-                );
-              })}
-          </View>
+            }
+          })}
         </View>
       </Page>
     </Document>

@@ -115,9 +115,11 @@ export const TryForm = () => {
     console.log(pdfValues);
     //might set input form values
     //setValue(data);
-
-    // set values to be passed to the pdf 
-    setPdfValues(data);
+    
+    // Show the PDF viewer
+    setShowPDF(true);
+    setShowPDF(false);
+    setShowPDF(true);
     
   };
 
